@@ -1,3 +1,7 @@
+#Note: When downloading the project, do not forget to run (npm install).
+
+
+
 # THP
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.1.
