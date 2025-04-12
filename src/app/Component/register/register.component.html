@@ -1,0 +1,87 @@
+<div class="login-layout">
+ 
+    <div class="login-left">
+      <div class="logo">
+        <i class="fas fa-briefcase"></i>
+        <span>THP</span>
+      </div>
+  
+      <h2>Create Account</h2>
+      <p class="text-muted">
+        Already have an account? <a href="#">Sign In</a>
+      </p>
+  
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <input type="text" placeholder="Full Name" formControlName="fullName" />
+        <input type="text" placeholder="Username" formControlName="username" />
+        <input type="email" placeholder="Email address" formControlName="email" />
+  
+       
+        <select formControlName="userType">
+          <option value="">Select Role</option>
+          
+          <option value="job_owner">Job Owner</option>
+          <option value="artisan">Artisan / Technician</option>
+        </select>
+  
+    
+        <div class="password-input">
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            placeholder="Password"
+            formControlName="password"
+            (input)="checkPasswordRules()"
+          />
+          <i
+            class="fas"
+            [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"
+            (click)="togglePassword()"
+          ></i>
+        </div>
+  
+      
+        <div class="password-input">
+          <input
+            [type]="showConfirm ? 'text' : 'password'"
+            placeholder="Confirm Password"
+            formControlName="confirmPassword"
+          />
+          <i
+            class="fas"
+            [ngClass]="showConfirm ? 'fa-eye-slash' : 'fa-eye'"
+            (click)="toggleConfirmPassword()"
+          ></i>
+        </div>
+  
+        <ul class="password-rules" *ngIf="f['password'].value?.length > 0">
+          <li [class.valid]="rules.minLength">Min 8 characters</li>
+          <li [class.valid]="rules.uppercase">At least 1 uppercase letter</li>
+          <li [class.valid]="rules.lowercase">At least 1 lowercase letter</li>
+          <li [class.valid]="rules.number">At least 1 number</li>
+          <li [class.valid]="rules.specialChar">At least 1 special character</li>
+          <li [class.valid]="rules.noSpaces">No spaces allowed</li>
+          
+        </ul>
+  
+        <button type="submit">
+          Register <i class="fas fa-arrow-right"></i>
+        </button>
+      </form>
+    </div>
+
+    <div class="login-right">
+      <div class="stats">
+        <h3>Join thousands of artisans and job owners<br />connecting every day.</h3>
+        <div class="grid">
+          <div>
+            <i class="fas fa-users"></i>
+            <p>+175k<br /><span>Users</span></p>
+          </div>
+          <div>
+            <i class="fas fa-briefcase"></i>
+            <p>+7.5k<br /><span>New Jobs</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
