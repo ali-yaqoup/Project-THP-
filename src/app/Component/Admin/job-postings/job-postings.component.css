@@ -1,0 +1,61 @@
+.card {
+  width: 65%;
+  padding: 1rem !important;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  margin: 0px;
+  margin-top: -200px;
+}
+
+.card .card-title {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.status {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+}
+.status.active {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+.status.pending {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.table td,
+.table th {
+  padding: 0.5rem 0.75rem;
+  font-size: 14px;
+}
+
+.table-responsive {
+  padding: 10px;
+  max-height: 220px;
+  overflow-y: auto;
+}
+.table-responsive::-webkit-scrollbar {
+  width: 6px;
+}
+.table-responsive::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,0.2);
+  border-radius: 3px;
+}
+.table-responsive {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0,0,0,0.2) transparent;
+
+}
+
+.btn.btn-sm {
+  font-size: 12px;
+  padding: 4px 10px;
+  line-height: 1.2;
+}
+
+

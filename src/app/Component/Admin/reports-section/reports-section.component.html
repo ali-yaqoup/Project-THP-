@@ -1,0 +1,42 @@
+<div class="row align-items-stretch ms-3" *ngIf="isBrowser">
+  <div class="col-12 mb-3">
+    <div class="report-box p-3 ">
+      <div class="fw-bold mb-2">Monthly Reports</div>
+      <canvas baseChart
+        [data]="lineChartData"
+        [options]="lineChartOptions"
+        chartType="line">
+</canvas>
+    </div>
+  </div>
+  <div class="col-12 col-md-6 mb-3">
+    <div class="report-box p-3 ">
+      <div class="fw-bold mb-2">Jobs by Category</div>
+      <canvas baseChart
+              [data]="barChartData"
+              [options]="barChartOptions"
+              chartType="bar">
+      </canvas>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-6 mb-3">
+    <div class="report-box p-3  text-center">
+      <div class="fw-bold mb-2">Jobs by Status</div>
+      <canvas baseChart
+              [data]="doughnutChartData"
+              [options]="doughnutChartOptions"
+              chartType="doughnut">
+      </canvas>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-6 mb-3">
+    <div class="report-box p-3  text-center">
+      <div class="fw-bold mb-2">Download Reports</div>
+      <button class="btn btn-outline-dark btn-sm">
+        <i class="fas fa-download me-1"></i> Download Report
+      </button>
+    </div>
+  </div>
+</div>

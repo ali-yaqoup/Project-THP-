@@ -1,12 +1,25 @@
 
-<div class="container-fluid">
+<div class="container-fluid ">
   <div class="row">
-    <div class="col-md-2">
-
+    <div class="col-12 col-md-2 p-0">
+<app-admin-dashboard></app-admin-dashboard>
     </div>
-    <div class="col-md-10">
-     <app-test></app-test>
-
+    <div class="col-12 col-md-10 py-px-2">
+      <br>
+      <div class="row">
+        <div class="col-12 col-lg-8 mb-4">
+          <app-manage-users></app-manage-users>
+        </div>
+        <div class="reports col-12 col-lg-4 mb-9  ">
+          <app-reports-section></app-reports-section>
+        </div>
+      </div>
+      <div class="row" >
+        <div class="jopss col-12" >
+          <app-job-postings></app-job-postings>
+        </div>
+      </div>
     </div>
+
   </div>
 </div>
