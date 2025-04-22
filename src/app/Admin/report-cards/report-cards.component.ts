@@ -18,3 +18,4 @@ export class ReportCardsComponent {
     { title: 'Requests Rejected', value: '150', icon: 'fas fa-times-circle', color: '#dc3545' },
   ];
 }
+
