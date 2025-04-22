@@ -1,11 +1,11 @@
 .report-box {
   background-color: #fff;
   border-radius: var(--border-radius, 12px);
-  box-shadow: var(--box-shadow, 0 0 10px rgba(0,0,0,0.05));
-  padding: 20px;
+  box-shadow: 0 0 10px rgba(78, 65, 216, 0.151);
 
+  padding: 20px;
   font-family: var(--font-family, 'Segoe UI', Tahoma, sans-serif);
-  border: 1px solid #ddd;
+
   height: 100%;
   max-height:100%;
 }
@@ -32,3 +32,4 @@ button.btn.btn-outline-dark.btn-sm:hover i {
   color: #fff !important;
   transform: translateY(-1px);
 }
+

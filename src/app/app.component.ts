@@ -5,16 +5,18 @@ import { ManageUsersComponent } from "./Component/Admin/manage-users/manage-user
 import { JobPostingsComponent } from "./Component/Admin/job-postings/job-postings.component";
 import { ReportsSectionComponent } from "./Component/Admin/reports-section/reports-section.component";
 import { AdminDashboardComponent } from "./Component/Admin/admin-dashboard/admin-dashboard.component";
+import { ReportCardsComponent } from "./Component/Admin/report-cards/report-cards.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterModule, CommonModule, ManageUsersComponent, JobPostingsComponent, ReportsSectionComponent, AdminDashboardComponent],
+  imports: [RouterModule, CommonModule, ManageUsersComponent, JobPostingsComponent, ReportsSectionComponent, AdminDashboardComponent, ReportCardsComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
 users: any;
+reports: any;
   title(title: any) {
     throw new Error('Method not implemented.');
   }

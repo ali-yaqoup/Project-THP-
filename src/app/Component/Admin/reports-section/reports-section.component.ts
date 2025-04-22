@@ -29,6 +29,7 @@ export class ReportsSectionComponent {
     }
   }
 
+ 
   jobs = [
     { title: 'Networking Engineer', category: 'Dev', status: 'Active' },
     { title: 'UX Designer', category: 'Design', status: 'Active' },
@@ -37,7 +38,6 @@ export class ReportsSectionComponent {
     { title: 'Front-end Dev', category: 'Dev', status: 'Active' },
     { title: 'UI Artist', category: 'Design', status: 'Active' },
   ];
-
 
   lineChartData: ChartConfiguration<'line'>['data'] = {
     labels: ['Jan', 'Feb', 'Mar', 'Apr'],
@@ -67,7 +67,6 @@ export class ReportsSectionComponent {
     elements: { point: { radius: 0 } }
   };
 
-
   barChartData: ChartConfiguration<'bar'>['data'] = {
     labels: [],
     datasets: []
@@ -78,7 +77,6 @@ export class ReportsSectionComponent {
     plugins: { legend: { display: false } },
     scales: { x: { display: false }, y: { display: false } }
   };
-
 
   doughnutChartData: ChartConfiguration<'doughnut'>['data'] = {
     labels: [],
@@ -98,7 +96,6 @@ export class ReportsSectionComponent {
     }
   };
 
-
   prepareBarChartData() {
     const categoryCounts: Record<string, number> = {};
     this.jobs.forEach(job => {
@@ -114,7 +111,6 @@ export class ReportsSectionComponent {
       }]
     };
   }
-
 
   prepareDoughnutChartData() {
     const statusCounts: Record<string, number> = {};
