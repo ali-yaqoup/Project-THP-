@@ -1,0 +1,37 @@
+<div class="border-top pt-3">
+  <h6 class="text-secondary mb-3">
+    <i class="bi bi-pencil-square me-2"></i>Submit Bid
+  </h6>
+
+  <div class="row g-2">
+    <div class="col-md-6">
+      <div class="input-group">
+        <span class="input-group-text">$</span>
+        <input type="number"
+               class="form-control"
+               placeholder="Your Price"
+               [(ngModel)]="bidPrice"
+               name="bidPrice"> 
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="input-group">
+        <span class="input-group-text">
+          <i class="bi bi-calendar"></i>
+        </span>
+        <input type="text"
+               class="form-control"
+               placeholder="Timeline (days)"
+               [(ngModel)]="bidTimeline"
+               name="bidTimeline">
+      </div>
+    </div>
+
+    <div class="col-12 mt-2">
+      <button class="btn btn-success w-100" (click)="submitBid()">
+        <i class="bi bi-send-check me-2"></i>Submit Bid
+      </button>
+    </div>
+  </div>
+</div>
