@@ -1,43 +1,31 @@
 import { Component } from '@angular/core';
-
-import { EmailVerificationComponent } from './Component/email-verification/email-verification.component';
-import { ForgotPasswordComponent } from './Component/forgot-password/forgot-password.component';
-import { ResetPasswordComponent } from './Component/reset-password/reset-password.component';
-import { LoginPageComponent } from './Component/login-page/login-page.component';
-import { RegisterComponent } from './Component/register/register.component';
-import { HeaderComponent } from './Component/HOME/header/header.component';
-import { ErrorComponent } from './Component/error/error.component';
-import { HeroSectionComponent } from './Component/HOME/hero-section/hero-section.component';
-import { HowItWorksComponent } from './Component/HOME/how-it-works/how-it-works.component';
-import { TopCategoriesComponent } from './Component/HOME/top-categories/top-categories.component';
-import { FooterComponent } from './Component/HOME/footer/footer.component';
-import { TestimonialsComponent } from './Component/HOME/testimonials/testimonials.component';
-import { AboutHeroComponent } from './Component/ABUT-US/about-hero/about-hero.component';
-import { AboutMissionComponent } from './Component/ABUT-US/about-mission/about-mission.component';
-import { AboutWhyComponent } from './Component/ABUT-US/about-why/about-why.component';
-import { AboutCtaComponent } from './Component/ABUT-US/about-cta/about-cta.component';
-import { AboutTeamComponent } from './Component/ABUT-US/about-team/about-team.component';
-import { ServicesHeroComponent } from './Component/Servicse/services-hero/services-hero.component';
-import { ContactHeaderComponent } from './Component/Contact/contact-header/contact-header.component';
-import { ContactFormComponent } from './Component/Contact/contact-form/contact-form.component';
-import { ContactInfoComponent } from './Component/Contact/contact-info/contact-info.component';
-import { ContactMapComponent } from './Component/Contact/contact-map/contact-map.component';
-
-
-import { RouterModule } from '@angular/router';
-
-
-
+import { RouterModule, Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { ManageUsersComponent } from "./Admin/manage-users/manage-users.component";
+import { JobPostingsComponent } from "./Admin/job-postings/job-postings.component";
+import { ReportsSectionComponent } from "./Admin/reports-section/reports-section.component";
+import { AdminDashboardComponent } from "./Admin/admin-sidebar/admin-dashboard.component";
+import { ReportCardsComponent } from "./Admin/report-cards/report-cards.component";
 
 @Component({
   selector: 'app-root',
-  imports: [LoginPageComponent,EmailVerificationComponent,ForgotPasswordComponent,ResetPasswordComponent,RegisterComponent,HeaderComponent,ErrorComponent,HeroSectionComponent,HowItWorksComponent,TopCategoriesComponent,FooterComponent,TestimonialsComponent,AboutHeroComponent,AboutMissionComponent,AboutWhyComponent,AboutCtaComponent,AboutTeamComponent,ServicesHeroComponent,ContactHeaderComponent,ContactFormComponent,ContactInfoComponent,ContactMapComponent,RouterModule
-    
-  ],
-
+  standalone: true,
+  imports: [RouterModule, CommonModule, ManageUsersComponent, JobPostingsComponent, ReportsSectionComponent, AdminDashboardComponent, ReportCardsComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'THP';
+users: any;
+reports: any;
+  title(title: any) {
+    throw new Error('Method not implemented.');
+  }
+constructor(private router: Router) {}
+
+  closeModal() {
+    this.router.navigate([{ outlets: { popup: null }}]);
+  }
+  get isModalOpen(): boolean {
+    return location.href.includes('(popup:');
+  }
 }
