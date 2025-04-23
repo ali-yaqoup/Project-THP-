@@ -1,0 +1,49 @@
+.about-hero {
+    background: linear-gradient(135deg, #e3e9f0, #f9fafb);
+    padding: 5rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  .about-hero .container {
+    max-width: 960px;
+  }
+  
+  .about-hero .main-title {
+    font-size: 2.8rem;
+    color: #1f2c3e;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .about-hero .description {
+    font-size: 1.15rem;
+    color: #3c3c3c;
+    line-height: 1.9;
+    margin-bottom: 1.2rem;
+    font-weight: 400;
+  }
+  
+  @media (max-width: 768px) {
+    .about-hero .main-title {
+      font-size: 2rem;
+    }
+  
+    .about-hero .description {
+      font-size: 1rem;
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }

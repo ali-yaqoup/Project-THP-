@@ -20,16 +20,13 @@
               "zone.js"
             ],
             "tsConfig": "tsconfig.app.json",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
+           "assets": [
+  "src/assets/favicon.ico"
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
-              "src/styles.css"
+               "src/styles.css"
             ],
             "scripts": ["node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"],
             "server": "src/main.server.ts",
@@ -101,6 +98,6 @@
     }
   },
   "cli": {
-    "analytics": false
+    "analytics": "c871b9d3-c586-4f19-b2e6-bcbd3ab4f48e"
   }
 }

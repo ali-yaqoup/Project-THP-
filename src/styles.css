@@ -1,1 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+  box-sizing: border-box;
+}
+.custom-swal-popup{
+font-size: 10px !important;
+  padding: 10px !important;
+  background-color: #f8f9fa !important;
+  color: #343a40 !important;
+  border: 2px solid #7a8a9a !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+height: 300px !important;
+  width: 300px !important;
+  border-radius: 12px;
+}
+.swal-sm-popup{
+  font-size: 10px !important;
+  padding: 10px !important;
+  background-color: #f8f9fa !important;
+  color: #343a40 !important;
+  border: 2px solid #9daab8 !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+height: 200px !important;
+  width: 300px !important;
+  border-radius: 12px;
+  position: 'center'
+}

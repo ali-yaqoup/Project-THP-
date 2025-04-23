@@ -1,0 +1,29 @@
+<header class="navbar">
+    <div class="container">
+  
+      <div class="logo">
+        <i class="fas fa-tools"></i>
+        <span>THP</span>
+      </div>
+  
+  
+      <nav class="nav-links" [class.active]="menuOpen">
+        <a routerLink="/">Home</a>
+        <a routerLink="/about">About</a>
+        <a routerLink="/services">Services</a>
+        <a routerLink="/contact">Contact</a>
+      </nav>
+  
+      <div class="nav-buttons desktop-only">
+        <button class="btn-outline">Login</button>
+        <button class="btn-primary">Create Account</button>
+      </div>
+  
+      
+      <div class="hamburger mobile-only" (click)="toggleMenu()">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+
+    
+  </header>
