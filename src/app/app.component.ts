@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { ManageUsersComponent } from "./Admin/manage-users/manage-users.component";
-import { JobPostingsComponent } from "./Admin/job-postings/job-postings.component";
-import { ReportsSectionComponent } from "./Admin/reports-section/reports-section.component";
-import { AdminDashboardComponent } from "./Admin/admin-sidebar/admin-dashboard.component";
-import { ReportCardsComponent } from "./Admin/report-cards/report-cards.component";
+import { ManageUsersComponent } from "./Component/Admin/manage-users/manage-users.component";
+import { JobPostingsComponent } from "./Component/Admin/job-postings/job-postings.component";
+import { ReportsSectionComponent } from "./Component/Admin/reports-section/reports-section.component";
+import { AdminDashboardComponent } from "./Component/Admin/admin-sidebar/admin-dashboard.component";
+import { ReportCardsComponent } from "./Component/Admin/report-cards/report-cards.component";
 
 @Component({
   selector: 'app-root',
