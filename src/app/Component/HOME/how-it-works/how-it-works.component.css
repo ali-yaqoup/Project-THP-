@@ -1,0 +1,66 @@
+.how-it-works {
+  text-align: center;
+  padding: 80px 30px;
+  background: #f9fbfc;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.how-it-works h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.subtext {
+  color: #666;
+  margin-bottom: 50px;
+}
+
+.steps {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.step {
+  flex: 1 1 250px;
+  max-width: 300px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.step i {
+  font-size: 36px;
+  color: #007bff;
+  margin-bottom: 15px;
+}
+
+.step h4 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.step p {
+  color: #555;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.how-buttons {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

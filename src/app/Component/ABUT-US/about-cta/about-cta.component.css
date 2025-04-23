@@ -1,0 +1,21 @@
+.about-cta {
+    background: linear-gradient(to right, #3a6df0, #1f3c88);
+    padding: 4rem 1.5rem;
+    color: white;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  .about-cta h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .about-cta p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .cta-buttons a {
+    margin: 0 0.5rem;
+  }

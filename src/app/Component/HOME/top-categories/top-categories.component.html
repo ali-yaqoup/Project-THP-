@@ -1,0 +1,11 @@
+<section class="top-categories">
+    <h2 class="section-title">Top Categories</h2>
+    <p class="section-subtitle">Explore the most in-demand services</p>
+  
+    <div class="categories-grid">
+      <div class="category-card" *ngFor="let category of categories">
+        <i [class]="category.icon"></i>
+        <h4>{{ category.name }}</h4>
+      </div>
+    </div>
+  </section>
