@@ -1,0 +1,243 @@
+.text-muted{
+  white-space: nowrap;
+  position: relative;
+  font-size: 40px;
+  top: 40px;
+  right: 380px;
+}
+#addpost:hover {
+  background-color: #2800b3 !important; 
+}
+#addpost {
+  background-color: #160092;
+  transition: background-color 0.3s ease;
+}
+#card{
+  position: relative;
+  top: 20px;
+  margin-bottom: 19px;
+}
+
+.title{
+  margin-left: 400px;
+  white-space: nowrap; 
+}
+
+.card-text-sm {
+  font-size: 14px;
+  color: #555;
+}
+
+.card {
+  border: none;
+}
+
+.card {
+  border: none;
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  transform: scale(1);
+  will-change: transform;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+  z-index: 5;
+}
+#addpost{
+  position: relative;
+  left: 700px;
+  top: 270px;
+border: none;
+}
+
+.icon-btn {
+  position: absolute;
+  top: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.delete-btn {
+  right: 50px;
+  background-color: #EF4444;
+}
+
+.delete-btn:hover {
+  background-color: #b91c1c;
+  transform: scale(1.1);
+  color: #fff;
+}
+
+.edit-btn {
+  right: 12px;
+  background-color: #3B82F6;
+}
+
+.edit-btn:hover {
+  background-color: #1d4ed8;
+  transform: scale(1.1);
+  color: #fff;
+}
+
+.icon-btn i {
+  transition: color 0.3s ease;
+}
+
+.custom-swal-popup {
+  max-width: 90%;
+  width: 400px;
+  border-radius: 16px;
+}
+
+.custom-swal-confirm {
+  background-color: #d33 !important;
+  color: #fff !important;
+  border-radius: 8px;
+  padding: 6px 20px;
+}
+
+.custom-swal-cancel {
+  background-color: #3085d6 !important;
+  color: #fff !important;
+  border-radius: 8px;
+  padding: 6px 20px;
+}
+
+.card-img-top {
+  height: 180px;
+  object-fit: cover;
+  width: 100%;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+.btn-view-offers {
+  background-color: #12B76A;
+  font-weight: 600;
+  color: #fff;
+  transition: background-color 0.4s ease, transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+}
+
+.btn-view-offers:hover {
+  background-color: #e0f7ec;
+  color: #12B76A;
+  transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+#text{
+ margin-top: 15px;
+}
+#text p{
+  margin-right: 200px;
+}
+.text-img {
+  position: absolute;
+
+  text-align: left;
+  bottom: 5px;
+  
+  top: 280px;
+  z-index: 2;
+  color: white;
+}
+
+.text-img h1, .text-img h5 {
+  margin: 0;
+  padding: 0;
+  color: white;
+  line-height: 2;
+}
+
+.text-img button {
+  width: 150px;
+  padding: 10px;
+  background-color: #1d4ed8;
+  border-radius: 5px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: 0.3s ease, transform 0.2s ease;
+  border: none;
+}
+
+.text-img button:hover {
+  background-color:#4a78f8;
+  transform: scale(1.05); 
+}
+
+
+@media (max-width: 768px) {
+  .title{
+    position: relative;
+    right: 400px;
+    white-space: nowrap; 
+  }
+  button{
+    position: relative;
+    right: 615px;
+    white-space: nowrap; 
+    margin-left: 10px;
+  }
+  .text-muted{
+    position: relative;
+    left: -620px;
+    font-size: 12px;
+  }
+  .col {
+    width: 75% !important;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+
+  .card {
+    height: auto !important;
+    padding: 10px;
+    flex-direction: column;
+  }
+
+  .card-img-top {
+    height: 140px !important;
+    object-fit: cover;
+  }
+
+  .card-title {
+    font-size: 16px;
+  }
+
+  .card-text-sm {
+    font-size: 13px;
+  }
+
+  .btn-view-offers {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .icon-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+  }
+
+  .delete-btn {
+    right: 40px;
+  }
+
+  .edit-btn {
+    right: 8px;
+  }
+  .text-img button{
+position: relative;
+right: 10px;
+  }
+}

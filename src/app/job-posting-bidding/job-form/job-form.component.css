@@ -1,0 +1,116 @@
+.card {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.top-bar {
+  background-color: transparent;
+}
+
+.upload-box {
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  color: #555;
+  transition: background-color 0.2s;
+}
+
+.upload-box:hover {
+  background-color: #f2f2f2;
+}
+
+.attached-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.attached-preview {
+  position: relative;
+  width: 200px;
+  height: 120px;
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.attached-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.remove-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 24px;
+  height: 24px;
+  color: #fff;
+  background-color: #f44336;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  border: none;
+  outline: none;
+  user-select: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.remove-btn i {
+  font-size: 20px;
+}
+
+.remove-btn:hover {
+  background-color: #e33a3a;
+  transform: scale(1.1);
+}
+
+.remove-btn:active {
+  transform: scale(0.95);
+}
+
+.cloud-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 8px;
+}
+
+.example-form {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+#margin {
+  position: relative;
+  left: 240px;
+}
+
+@media (max-width: 768px) {
+  #margin {
+    position: relative;
+    left: 80px;
+    margin-left: 10px;
+  }
+}
+
+.btn-custom {
+  background-color: #1d4ed8;
+  color: white;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.3s;
+  cursor: pointer;
+}
+
+.btn-custom:hover {
+  background-color: #456ea0;
+  transform: scale(1.05);
+}
