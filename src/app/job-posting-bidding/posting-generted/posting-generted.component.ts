@@ -12,7 +12,7 @@ export class PostingGenertedComponent {
 cards = [
     {
       id: 1,
-      imageUrl: 'assets/building.jpg',
+      imageUrl: '/assets/building.jpg',
       title: 'Renovation and Painting of Building Exterior',
       category: 'Construction',
       text: 'Complete renovation and painting of the building exterior, including surface preparation, sealing cracks, applying high-quality weather-resistant paint, and ensuring long-lasting protection against environmental elements. The project aims to enhance the building’s aesthetic appeal and structural integrity.',

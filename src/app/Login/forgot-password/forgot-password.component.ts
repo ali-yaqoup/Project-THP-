@@ -9,7 +9,7 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   templateUrl: './forgot-password.component.html',
   styleUrls: ['./forgot-password.component.css'],
-  imports: [CommonModule, ReactiveFormsModule, FormsModule,RouterLink]
+  imports: [CommonModule, ReactiveFormsModule, FormsModule]
 })
 export class ForgotPasswordComponent {
   forgotForm: FormGroup;
