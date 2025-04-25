@@ -13,7 +13,7 @@ interface AttachedFile {
   selector: 'app-job-edite-form',
   imports: [CommonModule, ReactiveFormsModule,RouterLink],
   templateUrl: './job-edite-form.component.html',
-  styleUrl: './job-edite-form.component.css'
+   styleUrl: './job-edite-form.component.css'
 })
 export class JobEditeFormComponent {
 title: string = '';

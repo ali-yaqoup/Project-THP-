@@ -13,7 +13,7 @@ interface AttachedFile {
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule,RouterLink],
   templateUrl: './job-form.component.html',
-  styleUrl: './job-form.component.css'
+ styleUrl: './job-form.component.css'
 })
 export class JobFormComponent implements OnInit {
   title: string = 'Post a New Job';

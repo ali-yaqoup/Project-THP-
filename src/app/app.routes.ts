@@ -15,6 +15,8 @@ import { ABUTUSComponent } from './ABUT-US/abut-us.component';
 import { ServicesComponent } from './services/services.component';
 import { LoginPageComponent } from './Login/login-page/login-page.component';
 import { ResetPasswordComponent } from './Login/reset-password/reset-password.component';
+import { PostingGenertedComponent } from './job-posting-bidding/posting-generted/posting-generted.component';
+
 
 export const routes: Routes = [
   {
@@ -47,7 +49,7 @@ export const routes: Routes = [
     component: JobPostingBiddingComponent,
     children: [
       { path: '', redirectTo: 'post', pathMatch: 'full' },
-      { path: 'post', component: JobFormComponent },
+      { path: 'post', component: PostingGenertedComponent },
       { path: 'edite', component: JobEditeFormComponent },
       { path: 'offers', component: JobBidTableComponent},
       { path: 'form', component: JobFormComponent},

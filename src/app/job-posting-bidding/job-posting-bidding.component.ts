@@ -7,7 +7,7 @@ import { FooterComponent } from '../footer/footer.component';
   selector: 'app-job-posting-bidding',
   imports: [RouterOutlet,HeaderComponent,FooterComponent ],
   templateUrl: './job-posting-bidding.component.html',
-  styleUrl: './job-posting-bidding.component.css'
+ 
 })
 export class JobPostingBiddingComponent {
 
