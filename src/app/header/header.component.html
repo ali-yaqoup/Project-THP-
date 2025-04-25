@@ -1,0 +1,30 @@
+<header class="navbar">
+    <div class="container">
+  
+      <div class="logo">
+        <i class="fas fa-tools"></i>
+        <span>THP</span>
+      </div>
+  
+  
+      <nav class="nav-links" [class.active]="menuOpen">
+        <a routerLink="/section">Home</a>
+        <a routerLink="/ABUTUS/about">About</a>
+        <a routerLink="/Services/services">Services</a>
+        <a routerLink="/Contact/contact">Contact</a>
+        <a routerLink="/JobPostingBiddingComponent/post">My Job</a>
+      </nav>
+  
+      <div class="nav-buttons desktop-only">
+        <button class="btn-outline" ><a style="color: white; text-decoration: none; " routerLink="/LoginComponent/login-page">Login</a></button>
+        <button class="btn-primary"><a style="color: white; text-decoration: none;" routerLink="/LoginComponent/register">Create Account</a></button>
+      </div>
+  
+      
+      <div class="hamburger mobile-only" (click)="toggleMenu()">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+
+    
+  </header>

@@ -1,0 +1,11 @@
+<section class="contact-info">
+    <div class="container">
+      <div class="info-grid">
+        <div class="info-box" *ngFor="let item of contactDetails">
+          <i class="{{ item.icon }}"></i>
+          <h4>{{ item.title }}</h4>
+          <p>{{ item.info }}</p>
+        </div>
+      </div>
+    </div>
+  </section>

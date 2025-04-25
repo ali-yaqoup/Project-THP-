@@ -1,0 +1,7 @@
+.report-box {
+  transition: transform 0.2s;
+}
+
+.report-box:hover {
+  transform: scale(1.02);
+}

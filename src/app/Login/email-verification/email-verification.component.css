@@ -1,0 +1,85 @@
+.verification-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #ffffff;
+    padding: 20px;
+  }
+  
+  .verification-container {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  .logo-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+  
+  .logo-icon {
+    font-size: 28px;
+    color: #007bff;
+    margin-right: 8px;
+  }
+  
+  .logo-text {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .instruction {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 30px;
+  }
+  
+  .code-input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    outline: none;
+  }
+  
+  .verify-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+  
+  .verify-btn i {
+    margin-left: 5px;
+  }
+  
+  .verify-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .resend-text {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #777;
+  }
+  
+  .resend-text a {
+    color: #007bff;
+    text-decoration: none;
+  }

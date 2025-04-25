@@ -1,0 +1,35 @@
+.report-box {
+  background-color: #fff;
+  border-radius: var(--border-radius, 12px);
+  box-shadow: 0 0 10px rgba(78, 65, 216, 0.151);
+
+  padding: 20px;
+  font-family: var(--font-family, 'Segoe UI', Tahoma, sans-serif);
+
+  height: 100%;
+  max-height:100%;
+}
+.btn-download {
+  background-color: transparent;
+  border: 2px solid var(--primary-color, #0d6efd);
+  color: var(--primary-color, #0d6efd);
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 30px;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+button.btn.btn-outline-dark.btn-sm:hover {
+  background-color: #0d6efd !important;
+  color: #fff !important;
+  border-color: #0d6efd !important;
+}
+button.btn.btn-outline-dark.btn-sm:hover i {
+  color: #fff !important;
+  transform: translateY(-1px);
+}
+

@@ -1,0 +1,37 @@
+.contact-info {
+    background: #f4f6f9;
+    padding: 60px 30px;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+  }
+  
+  .info-box {
+    background: #fff;
+    padding: 30px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: 0.3s;
+  }
+  
+  .info-box i {
+    font-size: 28px;
+    color: #007bff;
+    margin-bottom: 10px;
+  }
+  
+  .info-box h4 {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #222;
+  }
+  
+  .info-box p {
+    font-size: 14px;
+    color: #555;
+  }

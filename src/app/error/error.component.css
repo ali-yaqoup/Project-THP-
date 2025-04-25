@@ -1,0 +1,46 @@
+.error-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    text-align: center;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .error-content {
+    max-width: 500px;
+  }
+  
+  .error-content h1 {
+    font-size: 100px;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 10px;
+  }
+  
+  .error-content h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .error-content p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 30px;
+  }
+  
+  .home-btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s;
+  }
+  
+  .home-btn:hover {
+    background-color: #0056b3;
+  }
