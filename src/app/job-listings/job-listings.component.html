@@ -1,0 +1,53 @@
+<div class="container py-4">
+
+
+    <div class="row mb-4">
+      <div class="col-md-6 mb-2">
+        <input type="text" class="form-control" placeholder="Search by title..." [(ngModel)]="searchTerm">
+      </div>
+      <div class="col-md-6 mb-2">
+        <select class="form-select" [(ngModel)]="selectedCategory">
+          <option value="">All Categories</option>
+          <option *ngFor="let cat of uniqueCategories" [value]="cat">
+            {{ cat }}
+          </option>
+        </select>
+      </div>
+    </div>
+  
+
+    <div class="row g-4">
+      <div class="col-md-4" *ngFor="let card of paginatedJobs">
+        <div class="card h-100 shadow-sm custom-card">
+          <img [src]="card.imageUrl" class="card-img-top" alt="Project Image">
+          <div class="card-category-badge">{{ card.category }}</div>
+  
+          <div class="card-body d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="card-title fw-bold text-primary">{{ card.title }}</h5>
+              <p class="card-text text-muted">{{ card.text }}</p>
+              <p class="card-meta"><i class="bi bi-calendar-event me-1"></i> <strong>Deadline:</strong> {{ card.deadline }}</p>
+              <p class="card-meta"><i class="bi bi-credit-card me-1"></i> <strong>Budget:</strong> {{ card.minBudget }} - {{ card.maxBudget }}</p>
+            </div>
+            <a class="btn btn-view-offers w-100 mt-3">View Bids</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+   
+    <div class="d-flex justify-content-center mt-4" *ngIf="totalPages > 1">
+      <button class="btn btn-light me-2" (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+  
+      <button
+        class="btn me-2"
+        *ngFor="let page of [].constructor(totalPages); let i = index"
+        [ngClass]="{'btn-danger': currentPage === (i + 1), 'btn-light': currentPage !== (i + 1)}"
+        (click)="currentPage = i + 1">
+        {{ i + 1 }}
+      </button>
+  
+      <button class="btn btn-light" (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+    </div>
+  
+  </div>
