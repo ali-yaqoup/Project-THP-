@@ -1,0 +1,38 @@
+<div class="card p-3 ">
+  <h6 class="card-title mb-2">Job Postings & Transactions</h6>
+  <div class="table-responsive">
+    <table class="table table-borderless align-middle">
+      <thead class="small text-muted">
+        <tr>
+          <th>Job Title</th>
+          <th>Posted By</th>
+          <th>Date</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let job of jobs">
+          <td>{{ job.title }}</td>
+          <td>{{ job.postedBy }}</td>
+          <td>{{ job.date }}</td>
+          <td>
+            <span class="badge d-flex align-items-center gap-1" [ngClass]="getBadgeClass(job.status)">
+              <ng-container [ngSwitch]="job.status">
+                <i *ngSwitchCase="'Active'" class="fas fa-check-circle"></i>
+                <i *ngSwitchCase="'Remove'" class="fas fa-times-circle"></i>
+                <i *ngSwitchDefault class="fas fa-info-circle"></i>
+              </ng-container>
+              {{ job.status }}
+            </span>
+          </td>
+          <td>
+            <button class="btn btn-outline-danger btn-sm" (click)="removeJob(job)">
+              <i class="fas fa-trash-alt me-1"></i> Remove
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

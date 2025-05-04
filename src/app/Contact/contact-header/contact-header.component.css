@@ -1,0 +1,23 @@
+.contact-header {
+    background: linear-gradient(90deg, #f1f4ff, #ffece6);
+    padding: 60px 30px;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  .contact-header .main-title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #1f2c3e;
+    margin-bottom: 10px;
+  }
+  
+  .contact-header .subtitle {
+    font-size: 18px;
+    color: #555;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }

@@ -1,16 +1,9 @@
 import { Component } from '@angular/core';
-import { RouterModule, Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { ManageUsersComponent } from "./Component/Admin/manage-users/manage-users.component";
-import { JobPostingsComponent } from "./Component/Admin/job-postings/job-postings.component";
-import { ReportsSectionComponent } from "./Component/Admin/reports-section/reports-section.component";
-import { AdminDashboardComponent } from "./Component/Admin/admin-sidebar/admin-dashboard.component";
-import { ReportCardsComponent } from "./Component/Admin/report-cards/report-cards.component";
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterModule, CommonModule, ManageUsersComponent, JobPostingsComponent, ReportsSectionComponent, AdminDashboardComponent, ReportCardsComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })

@@ -24,9 +24,11 @@
   "src/assets/favicon.ico"
             ],
             "styles": [
+
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
-               "src/styles.css"
+              "src/styles.css"
+
             ],
             "scripts": ["node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"],
             "server": "src/main.server.ts",
@@ -98,6 +100,6 @@
     }
   },
   "cli": {
-    "analytics": "c871b9d3-c586-4f19-b2e6-bcbd3ab4f48e"
+    "analytics": "1085aa0d-428c-45f0-a66f-dd23f6da184f"
   }
 }

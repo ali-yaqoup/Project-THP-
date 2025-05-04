@@ -1,0 +1,83 @@
+<div class="container-fluid">
+  <div class="row gx-4 gy-4">
+    <div class="col-12">
+      <div class="card p-3">
+        <h6 class="card-title mb-3">Manage Users</h6>
+        <div class="table-responsive users-wrapper">
+          <table class="table table-borderless align-middle mb-0">
+            <thead class="small text-muted">
+              <tr>
+                <th>User</th>
+                <th>Account Type</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of users">
+                <td class="d-flex align-items-center">
+                  <img [src]="user.avatar" class="profile-img me-2" />
+                  {{ user.name }}
+                </td>
+                <td>{{ user.type }}</td>
+                <td>
+                  <span class="badge" [ngClass]="getBadgeClass(user.status)">
+                    {{ user.status }}
+                  </span>
+                </td>
+                <td>
+                  <ng-container *ngIf="user.status === 'Pending'; else noActions">
+                    <button
+                      class="btn btn-sm btn-outline-success me-2"
+                      (click)="approveUser(user)"
+                    >
+                      Approve
+                    </button>
+                    <button
+                      class="btn btn-sm btn-outline-danger"
+                      (click)="rejectUser(user)"
+                    >
+                      Reject
+                    </button>
+                  </ng-container>
+                  <ng-template #noActions>
+                    <span class="text-muted small">No action</span>
+                  </ng-template>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

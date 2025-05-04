@@ -1,0 +1,71 @@
+.testimonials {
+    background: #f4f6f9;
+    padding: 4rem 1rem;
+    animation: fadeIn 1s ease-in-out;
+  
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: #1f2c3e;
+    }
+  
+    .testimonial-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+  
+    .testimonial-card {
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      padding: 1.5rem;
+      max-width: 300px;
+      min-height: 180px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s ease;
+      animation: fadeIn 1s ease-in-out;
+  
+      &:hover {
+        transform: translateY(-5px);
+      }
+  
+      .message {
+        font-style: italic;
+        color: #333;
+        margin-bottom: 1rem;
+        line-height: 1.5;
+      }
+  
+      .user-info {
+        text-align: right;
+  
+        h4 {
+          margin: 0;
+          font-size: 1rem;
+          color: #1f2c3e;
+        }
+  
+        span {
+          font-size: 0.85rem;
+          color: #888;
+        }
+      }
+    }
+  }
+  
+  /* Fade-in animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }

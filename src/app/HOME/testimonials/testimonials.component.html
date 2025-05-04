@@ -1,0 +1,14 @@
+<section class="testimonials">
+  <div class="container">
+    <h2 class="section-title">What Our Users Say</h2>
+    <div class="testimonial-list">
+      <div class="testimonial-card" *ngFor="let t of testimonials">
+        <p class="message">“{{ t.message }}”</p>
+        <div class="user-info">
+          <h4>{{ t.name }}</h4>
+          <span>{{ t.role }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

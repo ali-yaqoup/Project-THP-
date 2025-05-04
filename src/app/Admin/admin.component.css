@@ -1,0 +1,37 @@
+@media (max-width: 768px){
+    .index {
+  position: relative;
+  bottom: 580px;
+  left: 10px;
+    }
+  
+    .reports{
+      position: relative;
+      bottom:660px;
+      right: 0px;
+      top: 3px;
+  
+  }
+  .jobs{
+      position: relative;
+      bottom: 830px;
+  
+  }
+  }
+  
+  @media (max-width: 768px){
+  
+    .reports{
+      position: relative;
+      bottom:660px;
+      right: 0px;
+      top: -50px;
+  }
+  }
+  @media (min-width: 400px){
+    .jobs{
+      top: 100px;
+      bottom:960px;
+  }
+  }
+  

@@ -1,0 +1,77 @@
+<div class="table-bidding" >
+  <main class="table" id="customers_table" style=" margin-bottom: 40px;">
+    <section class="table__header">
+      <h3><strong>Proposal and approval offers</strong></h3>
+    
+      <div class="input-group" style="background-color: rgb(228, 224, 224);">
+        <input type="search" placeholder="Search Data..." [(ngModel)]="searchTerm">
+      </div>
+    
+      <div class="export__file">
+        <label for="export-file" class="export__file-btn" title="Export File">
+          <img src="assets/export.png" style="width: 40px; height: 40px; border-radius: 50%; margin-left: -50px; margin-bottom: 10px;" alt="Export">
+        </label>
+    
+        <input type="checkbox" id="export-file">
+    
+        <div class="export__file-options">
+          <label for="export-file" (click)="generatePDF()">
+            <img src="assets/pdf.png"> PDF
+          </label>
+          <label for="export-file" (click)="exportToJSON()">
+            <img src="assets/json.png" > JSON
+          </label>
+          <label for="export-file" (click)="exportToCSV()">
+            <img src="assets/csv.png" > CSV
+          </label>
+          <label for="export-file" (click)="exportToExcel()">
+            <img src="assets/excel.png"> EXCEL
+          </label>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="table__body">
+      <table>
+        <thead>
+          <tr>
+            <th (click)="toggleSort('id')">ID</th>
+            <th (click)="toggleSort('jobTitle')">Job Title</th>
+            <th (click)="toggleSort('clientName')">Client Name</th>
+            <th (click)="toggleSort('price')">Price</th>
+            <th (click)="toggleSort('submissionDate')">Submission Date</th>
+            <th (click)="toggleSort('status')">Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let table of Tables">
+            <td>{{ table.id }}</td>
+            <td>{{ table.jobTitle }}</td>
+            <td>{{ table.clientName }}</td>
+            <td>{{ table.price | currency:'USD' }}</td>
+          
+            <td>{{ table.submissionDate }}</td>
+            <td [ngClass]="{
+              'status pending': table.status === 'Pending',
+              'status approved': table.status === 'Approved',
+              'status rejected': table.status === 'Rejected'
+            }">
+              {{ table.status }}
+            </td>
+            <td>
+              <ng-container *ngIf="!table.processed; else processedBlock">
+                <button class="custom-btn accept" (click)="acceptTable(table)">Accept</button>
+                <button class="custom-btn reject" (click)="rejectTable(table)">Reject</button>
+              </ng-container>
+              <ng-template #processedBlock>
+                <span class="processed-label" style="background-color: bisque; border-radius: 28px; padding: 11px;">Processed</span>
+              </ng-template>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</div>
