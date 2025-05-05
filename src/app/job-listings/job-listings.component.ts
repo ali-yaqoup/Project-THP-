@@ -1,126 +1,114 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+
 @Component({
   selector: 'app-job-listings',
-  imports: [CommonModule,FormsModule ],
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './job-listings.component.html',
   styleUrls: ['./job-listings.component.css']
 })
 export class JobListingsComponent {
-  jobCards = [
+  categories = ['Electrician', 'Plumber', 'Carpenter', 'Blacksmith', 'HVAC'];
+  locations = ['Ramallah', 'Jerusalem', 'Hebron', 'Nablus', 'Bethlehem'];
+
+  selectedCategory: string = '';
+  selectedLocation: string = '';
+  budgetMin: number | null = null;
+
+  messageContent: string = '';
+  selectedJob: any = null;
+  chatSidebarOpen: boolean = false;
+
+  jobs = [
     {
       id: 1,
-      title: 'Web Developer Needed',
-      text: 'Looking for a frontend developer with Angular experience.',
-      imageUrl: 'assets/images/web-dev.jpg',
-      category: 'Development',
+      title: 'Electrician Needed',
+      description: 'Looking for an experienced electrician to rewire a home.',
       deadline: '2025-05-15',
-      minBudget: 500,
-      maxBudget: 1200
+      budgetMin: 300,
+      budgetMax: 700,
+      category: 'Electrician',
+      location: 'Ramallah',
+      image: 'https://via.placeholder.com/400x200?text=Electrician'
     },
     {
       id: 2,
-      title: 'Graphic Designer',
-      text: 'Need a designer to create a brand identity.',
-      imageUrl: 'assets/images/design.jpg',
-      category: 'Design',
-      deadline: '2025-05-20',
-      minBudget: 300,
-      maxBudget: 700
+      title: 'Plumber Required',
+      description: 'Need a plumber to fix kitchen sink and bathroom pipes.',
+      deadline: '2025-05-18',
+      budgetMin: 200,
+      budgetMax: 500,
+      category: 'Plumber',
+      location: 'Jerusalem',
+      image: 'https://via.placeholder.com/400x200?text=Plumber'
     },
     {
       id: 3,
-      title: 'Mobile App Developer',
-      text: 'Create a cross-platform app using Flutter.',
-      imageUrl: 'assets/images/mobile.jpg',
-      category: 'Development',
-      deadline: '2025-05-25',
-      minBudget: 1000,
-      maxBudget: 2000
+      title: 'Carpenter Job Available',
+      description: 'Build custom wooden shelves and a wardrobe.',
+      deadline: '2025-05-20',
+      budgetMin: 400,
+      budgetMax: 1000,
+      category: 'Carpenter',
+      location: 'Hebron',
+      image: 'https://via.placeholder.com/400x200?text=Carpenter'
     },
-  
     {
       id: 4,
-      title: 'SEO Specialist',
-      text: 'Improve website ranking on Google.',
-      imageUrl: 'assets/images/seo.jpg',
-      category: 'Marketing',
-      deadline: '2025-05-18',
-      minBudget: 400,
-      maxBudget: 800
+      title: 'Blacksmith Needed',
+      description: 'Forge and install a custom gate.',
+      deadline: '2025-05-25',
+      budgetMin: 600,
+      budgetMax: 1200,
+      category: 'Blacksmith',
+      location: 'Bethlehem',
+      image: 'https://via.placeholder.com/400x200?text=Blacksmith'
     },
     {
       id: 5,
-      title: 'Content Writer',
-      text: 'Write articles and product descriptions.',
-      imageUrl: 'assets/images/writer.jpg',
-      category: 'Writing',
-      deadline: '2025-05-19',
-      minBudget: 200,
-      maxBudget: 500
-    },
-    {
-      id: 6,
-      title: 'Video Editor',
-      text: 'Edit short promotional videos.',
-      imageUrl: 'assets/images/video.jpg',
-      category: 'Design',
-      deadline: '2025-05-21',
-      minBudget: 300,
-      maxBudget: 900
-    },
-    {
-      id: 7,
-      title: 'Data Analyst',
-      text: 'Analyze sales and customer data.',
-      imageUrl: 'assets/images/data.jpg',
-      category: 'Analytics',
-      deadline: '2025-05-22',
-      minBudget: 600,
-      maxBudget: 1000
+      title: 'HVAC Technician',
+      description: 'Install and maintain AC units.',
+      deadline: '2025-05-28',
+      budgetMin: 500,
+      budgetMax: 1000,
+      category: 'HVAC',
+      location: 'Nablus',
+      image: 'https://via.placeholder.com/400x200?text=HVAC'
     }
   ];
 
-  searchTerm: string = '';
-  selectedCategory: string = '';
-  currentPage: number = 1;
-  itemsPerPage: number = 6;
-  uniqueCategories: string[] = [];
-
-  ngOnInit(): void {
-    this.extractUniqueCategories();
+  get filteredJobs() {
+    return this.jobs.filter(job => {
+      const matchCategory = this.selectedCategory ? job.category === this.selectedCategory : true;
+      const matchLocation = this.selectedLocation ? job.location === this.selectedLocation : true;
+      const matchBudget = this.budgetMin != null ? job.budgetMin >= this.budgetMin : true;
+      return matchCategory && matchLocation && matchBudget;
+    });
   }
 
-  extractUniqueCategories(): void {
-    this.uniqueCategories = [...new Set(this.jobCards.map(job => job.category))];
+  applyFilters() {
+    // No logic needed since filteredJobs is a getter
   }
 
-  filteredJobs(): any[] {
-    return this.jobCards.filter(job =>
-      job.title.toLowerCase().includes(this.searchTerm.toLowerCase()) &&
-      (this.selectedCategory === '' || job.category === this.selectedCategory)
-    );
+  openChatSidebar(job: any) {
+    this.selectedJob = job;
+    this.messageContent = '';
+    this.chatSidebarOpen = true;
   }
 
-  get totalPages(): number {
-    return Math.ceil(this.filteredJobs().length / this.itemsPerPage);
+  closeChatSidebar() {
+    this.chatSidebarOpen = false;
+    this.selectedJob = null;
+    this.messageContent = '';
   }
 
-  get paginatedJobs(): any[] {
-    const start = (this.currentPage - 1) * this.itemsPerPage;
-    return this.filteredJobs().slice(start, start + this.itemsPerPage);
-  }
-
-  nextPage(): void {
-    if (this.currentPage < this.totalPages) {
-      this.currentPage++;
-    }
-  }
-
-  prevPage(): void {
-    if (this.currentPage > 1) {
-      this.currentPage--;
+  sendMessage() {
+    if (this.selectedJob && this.messageContent.trim()) {
+      console.log(`Message to ${this.selectedJob.title}:`, this.messageContent);
+      alert(`Message sent to "${this.selectedJob.title}":\n${this.messageContent}`);
+      this.closeChatSidebar();
     }
   }
 }

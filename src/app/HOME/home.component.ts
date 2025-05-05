@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { BidSubmissionComponent } from '../Job-Search-Bidding/bid-submission/bid-submission.component';
 import { TopCategoriesComponent } from './top-categories/top-categories.component';
 import { TestimonialsComponent } from './testimonials/testimonials.component';
 import { HowItWorksComponent } from './how-it-works/how-it-works.component';
