@@ -12,7 +12,7 @@ import { JobBidTableComponent } from './job-posting-bidding/job-bid-table/job-bi
 import { JobFormComponent } from './job-posting-bidding/job-form/job-form.component';
 import { ContactComponent } from './Contact/contact.component';
 import { ABUTUSComponent } from './ABUT-US/abut-us.component';
-import { ServicesComponent } from './services/services.component';
+import { ServicesComponent } from './services-page/services.component';
 import { LoginPageComponent } from './Login/login-page/login-page.component';
 import { ResetPasswordComponent } from './Login/reset-password/reset-password.component';
 import { PostingGenertedComponent } from './job-posting-bidding/posting-generted/posting-generted.component';
