@@ -17,6 +17,14 @@ import { ApplyModalComponent } from './apply-modal/apply-modal.component';
   styleUrls: ['./job-listings.component.css']
 })
 export class JobListingsComponent {
+prevPage() {
+throw new Error('Method not implemented.');
+}
+currentPage: any;
+totalPages: any;
+nextPage() {
+throw new Error('Method not implemented.');
+}
   selectedCategory = '';
   selectedLocation = '';
   budgetMin: number | null = null;
