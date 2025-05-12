@@ -1,3 +1,4 @@
+
 .custom-card {
     border: none;
     border-radius: 16px;
@@ -5,12 +6,12 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     animation: fadeIn 0.8s ease-in-out;
   }
-  
+
   .custom-card:hover {
     transform: scale(1.03);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
   }
-  
+
   .card-category-badge {
     position: absolute;
     top: 12px;
@@ -23,14 +24,14 @@
     border-radius: 12px;
     z-index: 10;
   }
-  
+
   .card-img-top {
     height: 180px;
     object-fit: cover;
     border-top-left-radius: 16px;
     border-top-right-radius: 16px;
   }
-  
+
   .btn-view-offers {
     background-color: #198754;
     color: white;
@@ -38,12 +39,12 @@
     border-radius: 8px;
     transition: background-color 0.3s ease;
   }
-  
+
   .btn-view-offers:hover {
     background-color: #d1f2e2;
     color: #198754;
   }
-  
+
   .card-body {
     padding: 16px;
   }
@@ -54,12 +55,12 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     animation: fadeIn 0.8s ease-in-out;
   }
-  
+
   .custom-card:hover {
     transform: scale(1.03);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
   }
-  
+
   .card-category-badge {
     position: absolute;
     top: 12px;
@@ -72,14 +73,14 @@
     border-radius: 12px;
     z-index: 10;
   }
-  
+
   .card-img-top {
     height: 180px;
     object-fit: cover;
     border-top-left-radius: 16px;
     border-top-right-radius: 16px;
   }
-  
+
   .btn-view-offers {
     background-color: #198754;
     color: white;
@@ -87,8 +88,10 @@
     border-radius: 8px;
     transition: background-color 0.3s ease;
   }
-  
+
   .btn-view-offers:hover {
     background-color: #d1f2e2;
     color: #198754;
   }
+
+

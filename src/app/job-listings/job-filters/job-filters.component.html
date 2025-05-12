@@ -1,0 +1,34 @@
+<div class="card p-4 mb-5 shadow-sm rounded-4 bg-light border-0">
+  <div class="row g-3 align-items-end">
+    <div class="col-md-4">
+      <label class="form-label">Category</label>
+      <select class="form-select rounded-3"
+              [(ngModel)]="selectedCategory"
+              (ngModelChange)="selectedCategoryChange.emit($event); filterChanged.emit()">
+        <option value="">All Categories</option>
+        <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+      </select>
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Minimum Budget</label>
+      <input type="number" class="form-control rounded-3"
+             [(ngModel)]="budgetMin"
+             (ngModelChange)="budgetMinChange.emit($event); filterChanged.emit()" />
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Location</label>
+      <select class="form-select rounded-3"
+              [(ngModel)]="selectedLocation"
+              (ngModelChange)="selectedLocationChange.emit($event); filterChanged.emit()">
+        <option value="">All Locations</option>
+        <option *ngFor="let location of locations" [value]="location">{{ location }}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="text-end mt-3">
+    <button class="btn btn-outline-secondary" (click)="resetFilters()">Reset Filters</button>
+  </div>
+</div>

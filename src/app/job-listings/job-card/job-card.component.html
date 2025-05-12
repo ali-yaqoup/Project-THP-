@@ -1,0 +1,22 @@
+<div class="card job-card shadow-sm rounded-4 mb-4 h-100">
+  <div class="card-body d-flex flex-column">
+    <div class="d-flex align-items-center mb-2">
+      <img src="job-image.jpg" alt="Job Image" class="me-3 rounded-circle border" width="48" height="48">
+      <h5 class="card-title mb-0 text-primary fw-semibold">{{ job.title }}</h5>
+    </div>
+
+    <p class="text-muted small mb-2">{{ job.description }}</p>
+
+    <div class="mb-1 text-muted small">
+      <i class="bi bi-geo-alt-fill text-primary me-1"></i>{{ job.location }}
+      &nbsp;•&nbsp;
+      <i class="bi bi-cash text-success me-1"></i>Budget: {{ job.budget }}₪
+    </div>
+
+    <div class="text-muted small mb-3">
+      <i class="bi bi-calendar-event me-1"></i>Deadline: {{ job.deadline }}
+    </div>
+
+    <button class="btn btn-primary mt-auto w-100" (click)="openApplyModal()">Apply</button>
+  </div>
+</div>
