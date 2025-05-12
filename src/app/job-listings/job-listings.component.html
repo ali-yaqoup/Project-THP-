@@ -3,14 +3,14 @@
  <!-- Filters Bar -->
 <div class="row mb-4 border rounded p-3 shadow-sm bg-white align-items-center filter-box">
   <div class="col-md-4 mb-2 d-flex align-items-center gap-2">
-    <i class="bi bi-tools fs-5 text-primary"></i> <!-- أزرق للمهارات -->
+    <i class="bi bi-tools fs-5 text-primary"></i>
     <select class="form-select" [(ngModel)]="selectedCategory">
       <option value="">All Categories</option>
       <option *ngFor="let category of categories">{{ category }}</option>
     </select>
   </div>
   <div class="col-md-4 mb-2 d-flex align-items-center gap-2">
-    <i class="bi bi-cash-stack fs-5 text-success"></i> <!-- أخضر للميزانية -->
+    <i class="bi bi-cash-stack fs-5 text-success"></i>
     <input
       type="number"
       class="form-control"
@@ -19,7 +19,7 @@
     />
   </div>
   <div class="col-md-4 mb-2 d-flex align-items-center gap-2">
-    <i class="bi bi-geo-alt fs-5 text-danger"></i> <!-- أحمر خفيف للموقع -->
+    <i class="bi bi-geo-alt fs-5 text-danger"></i>
     <select class="form-select" [(ngModel)]="selectedLocation">
       <option value="">All Locations</option>
       <option *ngFor="let location of locations">{{ location }}</option>
@@ -57,14 +57,27 @@
         </div>
       </div>
     </div>
+
+
+    <div class="d-flex justify-content-center mt-4" *ngIf="totalPages > 1">
+      <button class="btn btn-light me-2" (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+
+      <button
+        class="btn me-2"
+        *ngFor="let page of [].constructor(totalPages); let i = index"
+        [ngClass]="{'btn-danger': currentPage === (i + 1), 'btn-light': currentPage !== (i + 1)}"
+        (click)="currentPage = i + 1">
+        {{ i + 1 }}
+      </button>
+
+      <button class="btn btn-light" (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+    </div>
+
   </div>
-
-  <!-- Apply Modal -->
-  <app-apply-modal
-    [open]="showApplyModal"
-    [job]="selectedJob"
-    (close)="closeApplyModal()"
-    (submit)="submitApplication($event)">
-  </app-apply-modal>
-
 </div>
+<app-apply-modal
+  [open]="showApplyModal"
+  [job]="selectedJob"
+  (close)="closeApplyModal()"
+  (submit)="submitApplication($event)"
+></app-apply-modal>
