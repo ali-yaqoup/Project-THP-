@@ -1,0 +1,27 @@
+<div class="modal fade show d-block" tabindex="-1" *ngIf="open" style="background-color: rgba(0, 0, 0, 0.5);">
+  <div class="modal-dialog">
+    <div class="modal-content rounded-4">
+      <div class="modal-header">
+        <h5 class="modal-title">Apply for: {{ job?.title }}</h5>
+        <button type="button" class="btn-close" (click)="onClose()"></button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label class="form-label">Name</label>
+            <input [(ngModel)]="name" name="name" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Phone</label>
+            <input [(ngModel)]="phone" name="phone" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Message (Optional)</label>
+            <textarea [(ngModel)]="message" name="message" class="form-control"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Submit Application</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

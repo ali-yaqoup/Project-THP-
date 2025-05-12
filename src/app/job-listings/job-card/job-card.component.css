@@ -1,0 +1,27 @@
+.card {
+  transition: transform 0.2s, box-shadow 0.2s;
+  height: 100%;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.job-card .card-title {
+  font-size: 1rem;
+}
+
+.job-card .card-body {
+  font-size: 0.875rem;
+}
+
+.job-card img {
+  object-fit: cover;
+  border: 1px solid #dee2e6;
+}
+
+.btn {
+  font-size: 0.875rem;
+  font-weight: 500;
+}

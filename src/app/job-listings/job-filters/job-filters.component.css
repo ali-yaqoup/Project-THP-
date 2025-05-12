@@ -1,0 +1,12 @@
+.card {
+  background-color: #f8f9fa;
+}
+
+.form-select,
+.form-control {
+  min-height: 45px;
+}
+
+i {
+  flex-shrink: 0;
+}
