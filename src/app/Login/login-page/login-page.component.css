@@ -3,7 +3,7 @@
     height: 100vh;
     font-family: 'Segoe UI', sans-serif;
   }
-  
+
   .login-left {
     flex: 1;
     padding: 50px;
@@ -12,7 +12,7 @@
     background: #fff;
     position: relative;
   }
-  
+
   .logo-top {
     position: absolute;
     top: 30px;
@@ -23,12 +23,12 @@
     color: #007bff;
     gap: 8px;
   }
-  
+
   .form-container {
     margin-top: 100px;
     max-width: 400px;
   }
-  
+
   .logo {
     display: flex;
     align-items: center;
@@ -36,22 +36,22 @@
     color: #007bff;
     margin-bottom: 30px;
   }
-  
+
   .logo i {
     margin-right: 8px;
   }
-  
+
   h2 {
     font-size: 26px;
     margin-bottom: 10px;
   }
-  
+
   .text-muted {
     font-size: 14px;
     color: #777;
     margin-bottom: 30px;
   }
-  
+
   form input {
     width: 100%;
     padding: 12px;
@@ -60,11 +60,11 @@
     margin-bottom: 15px;
     outline: none;
   }
-  
+
   .password-input {
     position: relative;
   }
-  
+
   .password-input i {
     position: absolute;
     right: 12px;
@@ -73,14 +73,14 @@
     color: #888;
     cursor: pointer;
   }
-  
+
   .options {
     display: flex;
     justify-content: space-between;
     font-size: 14px;
     margin-bottom: 20px;
   }
-  
+
   button[type='submit'] {
     width: 100%;
     padding: 12px;
@@ -91,13 +91,13 @@
     border-radius: 6px;
     cursor: pointer;
   }
-  
+
   .divider {
     text-align: center;
     margin: 20px 0;
     color: #aaa;
   }
-  
+
   .social-buttons button {
     width: 100%;
     padding: 10px;
@@ -108,17 +108,17 @@
     border-radius: 6px;
     cursor: pointer;
   }
-  
+
   .facebook i {
     color: #3b5998;
     margin-right: 8px;
   }
-  
+
   .google i {
     color: #db4437;
     margin-right: 8px;
   }
-  
+
   /* Right Side */
   .login-right {
     flex: 1;
@@ -134,30 +134,40 @@
     align-items: center;
     justify-content: center;
   }
-  
+
   .stats {
     text-align: center;
     padding: 40px;
   }
-  
+
   .stats h3 {
     font-size: 22px;
     margin-bottom: 40px;
   }
-  
+
   .grid {
     display: flex;
     justify-content: space-around;
     text-align: center;
     gap: 30px;
   }
-  
+
   .grid div {
     font-size: 14px;
   }
-  
+
   .grid i {
     font-size: 24px;
     margin-bottom: 5px;
     display: block;
   }
+  .custom-link {
+  text-decoration: none;
+  color: #007bff;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.custom-link:hover {
+  color: #0056b3;           
+}
