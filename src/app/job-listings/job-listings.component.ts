@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { JobCardComponent } from './job-card/job-card.component';
 import { ApplyModalComponent } from './apply-modal/apply-modal.component';
+import { HeaderComponent } from "../header/header.component";
+import { FooterComponent } from "../footer/footer.component";
 
 @Component({
   selector: 'app-job-listings',
@@ -11,8 +13,10 @@ import { ApplyModalComponent } from './apply-modal/apply-modal.component';
     CommonModule,
     FormsModule,
     JobCardComponent,
-    ApplyModalComponent
-  ],
+    ApplyModalComponent,
+    HeaderComponent,
+    FooterComponent
+],
   templateUrl: './job-listings.component.html',
   styleUrls: ['./job-listings.component.css']
 })

@@ -1,30 +1,31 @@
 <div class="login-layout">
- 
+
     <div class="login-left">
       <div class="logo">
         <i class="fas fa-briefcase"></i>
         <span>THP</span>
       </div>
-  
+
       <h2>Create Account</h2>
       <p class="text-muted">
-        Already have an account? <a href="#" routerLink="/LoginComponent/reset">Sign In</a>
+        Already have an account? <a routerLink="/LoginComponent/login-page" class="custom-link">Sign In</a>
+
       </p>
-  
+
       <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         <input type="text" placeholder="Full Name" formControlName="fullName" />
         <input type="text" placeholder="Username" formControlName="username" />
         <input type="email" placeholder="Email address" formControlName="email" />
-  
-       
+
+
         <select formControlName="userType">
           <option value="">Select Role</option>
-          
+
           <option value="job_owner">Job Owner</option>
           <option value="artisan">Artisan / Technician</option>
         </select>
-  
-    
+
+
         <div class="password-input">
           <input
             [type]="showPassword ? 'text' : 'password'"
@@ -38,8 +39,8 @@
             (click)="togglePassword()"
           ></i>
         </div>
-  
-      
+
+
         <div class="password-input">
           <input
             [type]="showConfirm ? 'text' : 'password'"
@@ -52,7 +53,7 @@
             (click)="toggleConfirmPassword()"
           ></i>
         </div>
-  
+
         <ul class="password-rules" *ngIf="f['password'].value?.length > 0">
           <li [class.valid]="rules.minLength">Min 8 characters</li>
           <li [class.valid]="rules.uppercase">At least 1 uppercase letter</li>
@@ -60,9 +61,9 @@
           <li [class.valid]="rules.number">At least 1 number</li>
           <li [class.valid]="rules.specialChar">At least 1 special character</li>
           <li [class.valid]="rules.noSpaces">No spaces allowed</li>
-          
+
         </ul>
-  
+
         <button type="submit">
          <a routerLink="/LoginComponent/email-verification" style="color: white; text-decoration: none; " >Register </a> <i class="fas fa-arrow-right"></i>
         </button>

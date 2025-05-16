@@ -4,7 +4,7 @@
     height: 100vh;
     font-family: 'Segoe UI', sans-serif;
   }
-  
+
   .login-left {
     flex: 1;
     padding: 50px;
@@ -13,7 +13,7 @@
     background: #fff;
     justify-content: center;
   }
-  
+
   .logo {
     display: flex;
     align-items: center;
@@ -21,22 +21,22 @@
     color: #007bff;
     margin-bottom: 30px;
   }
-  
+
   .logo i {
     margin-right: 8px;
   }
-  
+
   h2 {
     font-size: 26px;
     margin-bottom: 10px;
   }
-  
+
   .text-muted {
     font-size: 14px;
     color: #777;
     margin-bottom: 25px;
   }
-  
+
   /* Form */
   form input,
   form select {
@@ -48,16 +48,16 @@
     outline: none;
     font-size: 14px;
   }
-  
+
   form select {
     background-color: #fff;
     color: #333;
   }
-  
+
   .password-input {
     position: relative;
   }
-  
+
   .password-input i {
     position: absolute;
     right: 12px;
@@ -66,14 +66,14 @@
     color: #888;
     cursor: pointer;
   }
-  
+
   .options {
     display: flex;
     justify-content: space-between;
     font-size: 14px;
     margin-bottom: 20px;
   }
-  
+
   button[type='submit'] {
     width: 100%;
     padding: 12px;
@@ -85,7 +85,7 @@
     cursor: pointer;
     font-size: 15px;
   }
-  
+
   button[type='submit'] i {
     margin-left: 5px;
   }
@@ -97,11 +97,11 @@
     font-size: 13px;
     color: #888;
   }
-  
+
   .password-rules li {
     margin-bottom: 5px;
   }
-  
+
   .password-rules li.valid {
     color: green;
     font-weight: bold;
@@ -122,29 +122,38 @@
     justify-content: center;
     padding: 40px;
   }
-  
+
   .stats {
     text-align: center;
   }
-  
+
   .stats h3 {
     font-size: 22px;
     margin-bottom: 40px;
   }
-  
+
   .grid {
     display: flex;
     justify-content: space-around;
     text-align: center;
     gap: 30px;
   }
-  
+
   .grid div {
     font-size: 14px;
   }
-  
+
   .grid i {
     font-size: 24px;
     margin-bottom: 5px;
     display: block;
   }
+  .custom-link {
+  text-decoration: none;
+  color: #007bff;
+  cursor: pointer;
+}
+
+.custom-link:hover {
+  text-decoration: underline;
+}

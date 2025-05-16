@@ -16,6 +16,7 @@ import { ServicesComponent } from './services-page/services.component';
 import { LoginPageComponent } from './Login/login-page/login-page.component';
 import { ResetPasswordComponent } from './Login/reset-password/reset-password.component';
 import { PostingGenertedComponent } from './job-posting-bidding/posting-generted/posting-generted.component';
+import { JobListingsComponent } from './job-listings/job-listings.component';
 
 
 export const routes: Routes = [
@@ -25,7 +26,7 @@ export const routes: Routes = [
     children: [
       { path: '', redirectTo: 'section', pathMatch: 'full' },
       { path: 'section', component: HomeComponent },
-      
+
     ]
   },
 {
@@ -55,23 +56,23 @@ export const routes: Routes = [
       { path: 'form', component: JobFormComponent},
     ],
   },
-  
+
 {
     path:'ABUTUS',
     component: ABUTUSComponent ,
     children: [
       { path: 'about', component:ABUTUSComponent },
-    
+
     ],
   }
   ,
-  
+
 {
     path:'Contact',
     component: ContactComponent ,
     children: [
       { path: 'contact', component:ContactComponent },
-    
+
     ],
   },
   {
@@ -80,8 +81,17 @@ export const routes: Routes = [
     children: [
       { path: '', redirectTo: 'services', pathMatch: 'full' },
       { path: 'services', component:ServicesComponent },
-    
+
     ],
-  }
+  },
+
+  {
+    path: 'jobs',
+    component: JobListingsComponent,
+    children: [
+      { path: '', redirectTo: 'list', pathMatch: 'full' },
+      { path: 'list', component: JobListingsComponent },
+    ],
+  },
 ];
 
