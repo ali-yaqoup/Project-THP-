@@ -1,0 +1,26 @@
+[33m04275c6[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Merge pull request #12 from ali-yaqoup/data1
+[33m8cedb4c[m[33m ([m[1;31morigin/data1[m[33m, [m[1;32mdata1[m[33m)[m Merge branch 'main' into data1
+[33m68afd56[m backend
+[33m269e699[m Merge pull request #11 from ali-yaqoup/Ali-yaqoub
+[33m4959d7a[m[33m ([m[1;31morigin/Ali-yaqoub[m[33m, [m[1;32mAli-yaqoub[m[33m)[m Finish Front End
+[33m7ec220e[m Merge pull request #10 from ali-yaqoup/kareem
+[33m5851f1f[m[33m ([m[1;31morigin/kareem[m[33m)[m ready
+[33m4da4952[m rr
+[33m6af4b7e[m rr
+[33mb681cca[m Delete backend-THP directory
+[33m6fbb839[m Restore deleted job-listings component
+[33mf5a985e[m Delete src/app/job-listings directory
+[33m9a73c16[m Merge pull request #9 from ali-yaqoup/backend-22
+[33me337ca0[m[33m ([m[1;31morigin/backend-22[m[33m)[m backend
+[33m8edf1aa[m Merge pull request #8 from ali-yaqoup/kareem-Dwekat-33
+[33mf5f2739[m[33m ([m[1;31morigin/kareem-Dwekat-33[m[33m)[m add page
+[33md6ca7ea[m[33m ([m[1;31morigin/backend[m[33m)[m Merge pull request #6 from ali-yaqoup/waleed-arman
+[33m51926c9[m[33m ([m[1;31morigin/waleed-arman[m[33m)[m edite anmmation
+[33m7612012[m folders
+[33m8231a60[m folders
+[33m0f00066[m THP
+[33mbadc074[m THP
+[33m9ac511b[m Edit structure project
+[33mbc2a5c0[m Update README.md
+[33mc8a5b59[m Add bootstrap and fontawesome
+[33mba4c75d[m initial commit
