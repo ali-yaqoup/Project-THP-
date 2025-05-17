@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { JobListingsComponent } from "./job-listings/job-listings.component";
 import { AdminComponent } from "./Admin/admin.component";
-
+import { RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterModule, AdminComponent],
+  imports: [RouterOutlet, AdminComponent],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'THP';
