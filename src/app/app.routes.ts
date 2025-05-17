@@ -51,7 +51,7 @@ export const routes: Routes = [
     children: [
       { path: '', redirectTo: 'post', pathMatch: 'full' },
       { path: 'post', component: PostingGenertedComponent },
-      { path: 'edite', component: JobEditeFormComponent },
+      { path: 'edite/:id', component: JobEditeFormComponent },
       { path: 'offers', component: JobBidTableComponent},
       { path: 'form', component: JobFormComponent},
     ],

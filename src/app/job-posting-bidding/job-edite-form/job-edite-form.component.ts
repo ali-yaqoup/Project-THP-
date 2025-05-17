@@ -1,43 +1,78 @@
-import { Component } from '@angular/core';
-import { JobFormComponent } from '../job-form/job-form.component';
-import { FormGroup, FormControl, Validators, FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, Validators, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, RouterLink } from '@angular/router';
-
-interface AttachedFile {
-  name: string;
-  url: string | ArrayBuffer | null;
-}
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { FormPostService } from '../../services/form-post.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-job-edite-form',
-  imports: [CommonModule, ReactiveFormsModule,RouterLink],
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule, RouterLink],
   templateUrl: './job-edite-form.component.html',
-   styleUrl: './job-edite-form.component.css'
+  styleUrls: ['./job-edite-form.component.css']
 })
-export class JobEditeFormComponent {
-title: string = '';
-jobForm!: FormGroup;
-  attachedFiles: AttachedFile[] = [];
+export class JobEditeFormComponent implements OnInit {
+  postId!: number;
+  postForm!: FormGroup;
+  attachedFiles: { url: string; name: string }[] = [];
+  selectedFile: File | null = null;
+  originalImageUrl: string | null = null;
 
   categories: string[] = [
-    'Plumbing',
-    'Electrical',
-    'Painting',
-    'Cleaning',
-    'Carpentry',
-    'Renovation',
-    'Other'
+    'Plumbing', 'Electrical', 'Painting', 'Cleaning',
+    'Carpentry', 'Renovation', 'Other'
   ];
 
-  constructor(private route: ActivatedRoute, private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    private formPostService: FormPostService
+  ) {}
 
-  ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      this.title = params['title'] || 'Post a New Job';
+  ngOnInit(): void {
+    this.postId = Number(this.route.snapshot.paramMap.get('id'));
+
+    if (!this.postId || this.postId <= 0) {
+      Swal.fire('Error', 'Invalid post ID', 'error').then(() => {
+        this.router.navigate(['/posts']);
+      });
+      return;
+    }
+
+    this.initForm();
+
+    this.formPostService.getPostById(this.postId).subscribe({
+      next: (post) => {
+        this.postForm.patchValue({
+          jobTitle: post.title,
+          jobDescription: post.description,
+          minBudget: post.minimum_budget,
+          maxBudget: post.maximum_budget,
+          deadline: post.deadline,
+          category: post.category,
+          location: post.location,
+        });
+
+        if (post.attachments && post.attachments.length > 0) {
+          const firstAttachment = Array.isArray(post.attachments)
+            ? post.attachments[0]
+            : post.attachments;
+
+          this.originalImageUrl = this.formPostService.getImageUrl(firstAttachment);
+          this.attachedFiles = [{ url: this.originalImageUrl, name: 'Current Attachment' }];
+        }
+      },
+      error: (err) => {
+        console.error('Error loading post:', err);
+        Swal.fire('Error', 'Failed to load post data', 'error');
+      }
     });
+  }
 
-    this.jobForm = this.fb.group({
+  initForm() {
+    this.postForm = this.fb.group({
       jobTitle: ['', Validators.required],
       jobDescription: ['', Validators.required],
       minBudget: ['', Validators.required],
@@ -45,26 +80,76 @@ jobForm!: FormGroup;
       deadline: ['', Validators.required],
       category: ['', Validators.required],
       location: ['', Validators.required],
+      attachment: [null]
     });
   }
 
   onFileChange(event: any) {
-    const files = event.target.files;
-    if (files && files.length > 0) {
-      for (let file of files) {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          this.attachedFiles.push({
-            name: file.name,
-            url: e.target?.result || null
-          });
-        };
-        reader.readAsDataURL(file);
-      }
+    const file: File = event.target.files[0];
+    if (!file) return;
+
+    const allowedTypes = ['image/png', 'image/jpeg', 'image/jpg'];
+    if (!allowedTypes.includes(file.type)) {
+      Swal.fire('Rejected', 'Unsupported file type. Please upload a PNG or JPEG image.', 'error');
+      return;
     }
+
+    if (file.size > 2 * 1024 * 1024) {
+      Swal.fire('Rejected', 'The image is too large. Please upload an image smaller than 2MB.', 'error');
+      return;
+    }
+
+    this.selectedFile = file;
+    this.originalImageUrl = null;
+
+    const fileUrl = URL.createObjectURL(file);
+    this.attachedFiles = [{ url: fileUrl, name: file.name }];
   }
 
-  removeFile(file: AttachedFile) {
-    this.attachedFiles = this.attachedFiles.filter(f => f !== file);
+  removeFile(file: any) {
+    this.selectedFile = null;
+    this.originalImageUrl = null;
+    this.attachedFiles = [];
+  }
+
+onSave() {
+  if (this.postForm.invalid) {
+    this.postForm.markAllAsTouched();
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append('title', this.postForm.get('jobTitle')?.value);
+  formData.append('description', this.postForm.get('jobDescription')?.value);
+  formData.append('minimum_budget', this.postForm.get('minBudget')?.value);
+  formData.append('maximum_budget', this.postForm.get('maxBudget')?.value);
+  formData.append('deadline', this.postForm.get('deadline')?.value);
+  formData.append('category', this.postForm.get('category')?.value);
+  formData.append('location', this.postForm.get('location')?.value);
+
+  if (this.selectedFile) {
+    formData.append('attachment', this.selectedFile);
+  } else if (!this.originalImageUrl) {
+    formData.append('delete_attachment', 'true');
+  }
+
+  this.formPostService.updateJobPost(this.postId, formData).subscribe({
+    next: () => {
+      Swal.fire('Post updated successfully', '', 'success').then(() => {
+        this.router.navigate(['/JobPostingBiddingComponent/post']);
+      });
+    },
+    error: () => {
+      Swal.fire('Post updated successfully', '', 'success').then(() => {
+        this.router.navigate(['/JobPostingBiddingComponent/post']);
+      });
+    }
+  });
+}
+
+
+
+  onCancel() {
+    this.router.navigate(['/JobPostingBiddingComponent/post']);
   }
 }
