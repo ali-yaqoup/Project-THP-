@@ -1,110 +1,84 @@
 <div class="example-form">
-    <div class="container" style="max-width: 900px;">
-      
-      <div class="d-flex justify-content-between align-items-start mb-3 top-bar mb-1 mx-2" id="margin">
-        <div>
-          <h2 class="mb-0">Edite Post</h2>
-          <p class="text-muted mb-0" style="font-size: 14px;">
-            Fill in the details below to create your job posting
-          </p>
-        </div>
+  <div class="container" style="max-width: 900px;">
+    <div class="d-flex justify-content-between align-items-start mb-3 top-bar mb-1 mx-2" id="margin">
+      <div>
+        <h2 class="mb-0">Edit Post</h2>
+        <p class="text-muted mb-0" style="font-size: 14px;">
+          Fill in the details below to create your job posting
+        </p>
       </div>
-  
-      <div class="card">
-        <div class="card-body">        
-          <form [formGroup]="jobForm">
-            <div class="form-group mb-3">
-              <label for="jobTitle" class="form-label">Job Title</label>
-              <input id="jobTitle" type="text" class="form-control" formControlName="jobTitle" placeholder="e.g., Kitchen Renovation" />
-              <div class="text-danger mt-1" *ngIf="jobForm.get('jobTitle')?.touched && jobForm.get('jobTitle')?.invalid">
-                Please enter a job title.
-              </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">        
+        <form [formGroup]="postForm">
+          <div class="form-group mb-3">
+            <label for="jobTitle" class="form-label">Job Title</label>
+            <input id="jobTitle" type="text" class="form-control" formControlName="jobTitle" placeholder="e.g., Kitchen Renovation" />
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="jobDescription" class="form-label">Description</label>
+            <textarea id="jobDescription" class="form-control" formControlName="jobDescription" rows="3" placeholder="Describe the job requirements and specifications..."></textarea>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="minBudget" class="form-label">Minimum Budget</label>
+              <input id="minBudget" type="number" class="form-control" formControlName="minBudget" placeholder="e.g., 100" />
             </div>
-  
-            <div class="form-group mb-3">
-              <label for="jobDescription" class="form-label">Description</label>
-              <textarea id="jobDescription" class="form-control" formControlName="jobDescription" rows="3" placeholder="Describe the job requirements and specifications..."></textarea>
-              <div class="text-danger mt-1" *ngIf="jobForm.get('jobDescription')?.touched && jobForm.get('jobDescription')?.invalid">
-                Please add a job description.
-              </div>
+
+            <div class="col-md-6">
+              <label for="maxBudget" class="form-label">Maximum Budget</label>
+              <input id="maxBudget" type="number" class="form-control" formControlName="maxBudget" placeholder="e.g., 500" />
             </div>
-  
-            <div class="row mb-3">
-              <div class="col-md-6">
-                <label for="minBudget" class="form-label">Minimum Budget</label>
-                <input id="minBudget" type="number" class="form-control" formControlName="minBudget" placeholder="e.g., 100" />
-                <div class="text-danger mt-1" *ngIf="jobForm.get('minBudget')?.touched && jobForm.get('minBudget')?.invalid">
-                  Please specify the minimum budget.
-                </div>
-              </div>
-  
-              <div class="col-md-6">
-                <label for="maxBudget" class="form-label">Maximum Budget</label>
-                <input id="maxBudget" type="number" class="form-control" formControlName="maxBudget" placeholder="e.g., 500" />
-                <div class="text-danger mt-1" *ngIf="jobForm.get('maxBudget')?.touched && jobForm.get('maxBudget')?.invalid">
-                  Please specify the maximum budget.
-                </div>
-              </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="deadline" class="form-label">Deadline</label>
+              <input id="deadline" type="date" class="form-control" formControlName="deadline" />
             </div>
-  
-            <div class="row mb-3">
-              <div class="col-md-6">
-                <label for="deadline" class="form-label">Deadline</label>
-                <input id="deadline" type="date" class="form-control" formControlName="deadline" />
-                <div class="text-danger mt-1" *ngIf="jobForm.get('deadline')?.touched && jobForm.get('deadline')?.invalid">
-                  Please select a deadline.
-                </div>
-              </div>
-  
-              <div class="col-md-6">
-                <label for="category" class="form-label">Category</label>
-                <select id="category" class="form-control" formControlName="category">
-                  <option value="" disabled selected>Select a category</option>
-                  <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
-                </select>
-                <div class="text-danger mt-1" *ngIf="jobForm.get('category')?.touched && jobForm.get('category')?.invalid">
-                  Please select a category.
-                </div>
-              </div>
+
+            <div class="col-md-6">
+              <label for="category" class="form-label">Category</label>
+              <select id="category" class="form-control" formControlName="category">
+                <option value="" disabled selected>Select a category</option>
+                <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+              </select>
             </div>
-  
-            <div class="form-group mb-3">
-              <label for="location" class="form-label">Location</label>
-              <input id="location" type="text" class="form-control" formControlName="location" placeholder="Enter address" />
-              <div class="text-danger mt-1" *ngIf="jobForm.get('location')?.touched && jobForm.get('location')?.invalid">
-                Please provide a location.
-              </div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="location" class="form-label">Location</label>
+            <input id="location" type="text" class="form-control" formControlName="location" placeholder="Enter address" />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Attachments</label>
+            <div class="upload-box p-3 text-center" style="cursor: pointer;" (click)="fileInput.click()">
+              <img src="assets/cloud-arrow-up-solid.svg" alt="Upload" class="cloud-icon mb-2">
+              <p class="mb-0">Drag and drop files here, or click to browse</p>
+              <small class="text-muted">Maximum file size: 10MB</small>
             </div>
-  
-            <div class="mb-3">
-              <label class="form-label">Attachments</label>
-              <div class="upload-box p-3 text-center" style="cursor: pointer;" (click)="fileInput.click()">
-                <img src="assets/cloud-arrow-up-solid.svg" alt="Upload" class="cloud-icon mb-2">
-                <p class="mb-0">Drag and drop files here, or click to browse</p>
-                <small class="text-muted">Maximum file size: 10MB</small>
-              </div>
-              <input type="file" hidden #fileInput multiple (change)="onFileChange($event)" />
+            <input type="file" hidden #fileInput multiple (change)="onFileChange($event)" />
+          </div>
+
+          <div class="attached-container mt-3" *ngIf="attachedFiles.length > 0">
+            <div class="attached-preview d-inline-block me-2 mb-2" *ngFor="let file of attachedFiles">
+              <img [src]="file.url" [alt]="file.name" class="small-img" />
+              <span class="remove-btn" (click)="removeFile(file)">
+                <i class="bi bi-x-lg"></i>
+              </span>
             </div>
-  
-            <div class="attached-container mt-3" *ngIf="attachedFiles.length > 0">
-              <div class="attached-preview d-inline-block me-2 mb-2" *ngFor="let file of attachedFiles">
-                <img [src]="file.url" [alt]="file.name" class="small-img" />
-                <span class="remove-btn" (click)="removeFile(file)">
-                  <i class="bi bi-x-lg"></i>
-                </span>
-              </div>
-            </div>
-  
-            <div class="d-flex justify-content-end mt-4">
-              <button type="submit" class="btn-custom">
-                <a style="text-decoration: none; color: white;"  routerLink="/JobPostingBiddingComponent/post">Post Job</a>
-              </button>
-            </div>
-            
-          </form>
-        </div>
+          </div>
+
+          <div class="d-flex justify-content-end mt-4">
+            <button type="button" class="btn-custom" (click)="onSave()">Save Post</button>
+          </div>
+          
+        </form>
       </div>
-  
     </div>
   </div>
-  
+</div>

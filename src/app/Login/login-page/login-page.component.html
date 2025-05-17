@@ -1,15 +1,15 @@
 
 <div class="login-layout">
- 
+
     <div class="login-left">
       <div class="logo">
         <i class="fas fa-briefcase"></i>
         <span>THP</span>
       </div>
-  
+
       <h2>Sign in</h2>
       <p class="text-muted">
-        Don’t have account <a href="#" routerLink="/LoginComponent/register">Create Account</a>
+        Don’t have account <a routerLink="/LoginComponent/register" class="custom-link">Create Account</a>
       </p>
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <input type="email" formControlName="email" placeholder="Email address" />
@@ -17,20 +17,20 @@
           <input [type]="showPassword ? 'text' : 'password'" formControlName="password" placeholder="Password" />
           <i class="fas" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'" (click)="togglePassword()"></i>
         </div>
-  
+
         <div class="options">
-       
-          <a href="#"routerLink="/LoginComponent/reset">Forget password</a>
+
+          <a href="#"routerLink="/LoginComponent/reset" class="custom-link">Forget password</a>
         </div>
-  
+
         <button type="submit">
           <a routerLink="/section" style="color: white; text-decoration: none; ">Sign In </a><i class="fas fa-arrow-right"></i>
         </button>
       </form>
-  
-     
+
+
     </div>
-  
+
     <div class="login-right">
       <div class="stats">
         <h3>Over 1,75,324 candidates<br />waiting for good employees.</h3>
@@ -39,7 +39,7 @@
             <i class="fas fa-briefcase"></i>
             <p>1,75,324<br /><span>Live Job</span></p>
           </div>
-        
+
           <div>
             <i class="fas fa-suitcase"></i>
             <p>7,532<br /><span>New Jobs</span></p>
