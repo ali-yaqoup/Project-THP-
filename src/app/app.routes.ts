@@ -17,6 +17,7 @@ import { LoginPageComponent } from './Login/login-page/login-page.component';
 import { ResetPasswordComponent } from './Login/reset-password/reset-password.component';
 import { PostingGenertedComponent } from './job-posting-bidding/posting-generted/posting-generted.component';
 import { JobListingsComponent } from './job-listings/job-listings.component';
+import { AdminComponent } from './Admin/admin.component';
 
 
 export const routes: Routes = [
@@ -91,6 +92,14 @@ export const routes: Routes = [
     children: [
       { path: '', redirectTo: 'list', pathMatch: 'full' },
       { path: 'list', component: JobListingsComponent },
+    ],
+  },
+    {
+    path: 'Admin',
+    component: AdminComponent,
+    children: [
+      { path: '', redirectTo: 'list', pathMatch: 'full' },
+      { path: 'admin', component: AdminComponent },
     ],
   },
 ];

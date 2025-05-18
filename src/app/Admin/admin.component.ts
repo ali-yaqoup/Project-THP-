@@ -6,10 +6,11 @@ import { AdminDashboardComponent } from './admin-sidebar/admin-dashboard.compone
 import { ReportCardsComponent } from './report-cards/report-cards.component';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-admin',
-  imports: [RouterModule, CommonModule, ManageUsersComponent, JobPostingsComponent, ReportsSectionComponent, AdminDashboardComponent, ReportCardsComponent],
+  imports: [RouterModule, CommonModule, ManageUsersComponent, JobPostingsComponent, ReportsSectionComponent, AdminDashboardComponent, ReportCardsComponent,HeaderComponent],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css'
 })
