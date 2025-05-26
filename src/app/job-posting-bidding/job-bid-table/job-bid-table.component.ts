@@ -1,11 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import * as XLSX from 'xlsx';
 import * as FileSaver from 'file-saver';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import Swal from 'sweetalert2';
+import { PostService } from '../../services/post.service';
 
 interface TableEntry {
   id: number;
@@ -20,83 +22,136 @@ interface TableEntry {
 @Component({
   selector: 'app-job-bid-table',
   standalone: true,
-  imports: [CommonModule, FormsModule,],
+  imports: [CommonModule, FormsModule],
   templateUrl: './job-bid-table.component.html',
-  styleUrl: './job-bid-table.component.css'
+  styleUrls: ['./job-bid-table.component.css'],
+  providers: [PostService]
 })
-export class JobBidTableComponent {
+export class JobBidTableComponent implements OnInit {
+  post_id!: number;
+  bids: TableEntry[] = [];
+  filteredBids: TableEntry[] = [];
+
   sortColumn: string = '';
   sortAsc: boolean = true;
   searchTerm: string = '';
 
-  tables: TableEntry[] = [
-    { id: 1, jobTitle: 'Painter', clientName: 'Waleed Arman', price: 100, submissionDate: '20 May, 2023', status: 'Pending', processed: false },
-    { id: 2, jobTitle: 'Tiler', clientName: 'Ali Yauqop', price: 150, submissionDate: '22 May, 2023', status: 'Pending', processed: false },
-    { id: 3, jobTitle: 'Carpenter', clientName: 'Ahmad Musleh', price: 200, submissionDate: '23 May, 2023', status: 'Pending', processed: false },
-    { id: 4, jobTitle: 'Electrician', clientName: 'Omar Soud', price: 180, submissionDate: '24 May, 2023', status: 'Pending', processed: false },
-    { id: 5, jobTitle: 'Plumber', clientName: 'Ahmad Irshad', price: 170, submissionDate: '25 May, 2023', status: 'Pending', processed: false },
-    { id: 6, jobTitle: 'Painter', clientName: 'Fadi Hamed', price: 100, submissionDate: '26 May, 2023', status: 'Pending', processed: false },
-    { id: 7, jobTitle: 'Tiler', clientName: 'Salem Naji', price: 150, submissionDate: '27 May, 2023', status: 'Pending', processed: false },
-    { id: 8, jobTitle: 'Electrician', clientName: 'Hassan Nabil', price: 180, submissionDate: '28 May, 2023', status: 'Pending', processed: false },
-    { id: 9, jobTitle: 'Plumber', clientName: 'Yousef Jaber', price: 170, submissionDate: '29 May, 2023', status: 'Pending', processed: false }
-  ];
-  
+  constructor(
+    private route: ActivatedRoute,
+    private bidService: PostService
+  ) {}
 
-
-  get Tables() {
-    if (!this.searchTerm) return this.tables;
-    const term = this.searchTerm.toLowerCase();
-    return this.tables.filter(table =>
-      Object.values(table).some(val =>
-        val.toString().toLowerCase().includes(term)
-      )
-    );
+  ngOnInit(): void {
+    this.post_id = +this.route.snapshot.paramMap.get('post_id')!;
+    this.loadBids();
   }
 
-  toggleSort(column: string) {
+  loadBids(): void {
+    this.bidService.getBidsByPost(this.post_id).subscribe({
+      next: (data) => {
+        this.bids = data.map((bid: any) => ({
+          id: bid.id,
+          jobTitle: bid.job_title ?? '',
+          clientName: bid.user?.name ?? '',
+          price: bid.price ?? 0,
+          submissionDate: bid.submission_date ?? '',
+          status: bid.status ?? 'Pending',
+          processed: bid.processed ?? false
+        }));
+        this.filteredBids = [...this.bids];
+      },
+      error: (err) => {
+        console.error('Failed to load bids', err);
+      }
+    });
+  }
+
+  get Tables(): TableEntry[] {
+    let filtered = this.bids;
+
+    if (this.searchTerm.trim()) {
+      const term = this.searchTerm.toLowerCase();
+      filtered = filtered.filter(bid =>
+        Object.values(bid).some(val =>
+          val.toString().toLowerCase().includes(term)
+        )
+      );
+    }
+
+    if (this.sortColumn) {
+      filtered.sort((a, b) => {
+        let valA = (a as any)[this.sortColumn];
+        let valB = (b as any)[this.sortColumn];
+
+        if (this.sortColumn === 'price') {
+          valA = Number(valA);
+          valB = Number(valB);
+        }
+
+        if (this.sortColumn === 'submissionDate') {
+          const dateA = new Date(valA);
+          const dateB = new Date(valB);
+          return this.sortAsc ? dateA.getTime() - dateB.getTime() : dateB.getTime() - dateA.getTime();
+        }
+
+        if (valA < valB) return this.sortAsc ? -1 : 1;
+        if (valA > valB) return this.sortAsc ? 1 : -1;
+        return 0;
+      });
+    }
+
+    return filtered;
+  }
+
+  toggleSort(column: string): void {
     if (this.sortColumn === column) {
       this.sortAsc = !this.sortAsc;
     } else {
       this.sortColumn = column;
       this.sortAsc = true;
     }
-
-    this.tables.sort((a, b) => {
-      let valA = a[column as keyof TableEntry];
-      let valB = b[column as keyof TableEntry];
-
-      if (column === 'price') {
-        valA = Number(valA);
-        valB = Number(valB);
-      }
-
-      if (column === 'submissionDate') {
-        const dateA = new Date(valA as string);
-        const dateB = new Date(valB as string);
-        return this.sortAsc ? dateA.getTime() - dateB.getTime() : dateB.getTime() - dateA.getTime();
-      }
-
-      if (valA! < valB!) return this.sortAsc ? -1 : 1;
-      if (valA! > valB!) return this.sortAsc ? 1 : -1;
-      return 0;
-    });
   }
 
   exportToExcel(): void {
-    const worksheet = XLSX.utils.json_to_sheet(this.tables);
+    const worksheet = XLSX.utils.json_to_sheet(this.Tables);
     const workbook = { Sheets: { data: worksheet }, SheetNames: ['data'] };
     const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
     const blob = new Blob([excelBuffer], { type: 'application/octet-stream' });
-    FileSaver.saveAs(blob, 'Proposal_and_Approval_Management.xlsx');
+    FileSaver.saveAs(blob, 'bids.xlsx');
   }
 
   exportToCSV(): void {
-    const csvData = this.convertToCSV(this.tables);
+    const csvData = this.convertToCSV(this.Tables);
     const blob = new Blob([csvData], { type: 'text/csv;charset=utf-8;' });
-    FileSaver.saveAs(blob, 'tables.csv');
+    FileSaver.saveAs(blob, 'bids.csv');
+  }
+
+  exportToJSON(): void {
+    const json = JSON.stringify(this.Tables, null, 2);
+    const blob = new Blob([json], { type: 'application/json' });
+    FileSaver.saveAs(blob, 'bids.json');
+  }
+
+  generatePDF(): void {
+    const doc = new jsPDF();
+    const headers = [['ID', 'Job Title', 'Client Name', 'Price', 'Submission Date', 'Status']];
+    const rows = this.Tables.map(bid => [
+      bid.id,
+      bid.jobTitle,
+      bid.clientName,
+      `${bid.price} SAR`,
+      bid.submissionDate,
+      bid.status
+    ]);
+    autoTable(doc, {
+      head: headers,
+      body: rows,
+    });
+    doc.save('bids.pdf');
   }
 
   convertToCSV(objArray: any[]): string {
+    if (!objArray.length) return '';
     const headers = Object.keys(objArray[0]);
     const csvRows = [headers.join(',')];
     for (const row of objArray) {
@@ -106,68 +161,55 @@ export class JobBidTableComponent {
     return csvRows.join('\r\n');
   }
 
-  exportToJSON(): void {
-    const json = JSON.stringify(this.tables, null, 2);
-    const blob = new Blob([json], { type: 'application/json' });
-    FileSaver.saveAs(blob, 'Proposal_and_Approval_Management.json');
-  }
-
-  generatePDF(): void {
-    const doc = new jsPDF();
-    const headers = [['ID', 'Job Title', 'Client Name', 'Price', 'Submission Date', 'Status']];
-    const rows = this.tables.map(table => [
-      table.id,
-      table.jobTitle,
-      table.clientName,
-      `${table.price} SAR`,
-      table.submissionDate,
-      table.status
-      
-    ]);
-
-    autoTable(doc, {
-      head: headers,
-      body: rows,
+  acceptTable(bid: TableEntry): void {
+    this.bidService.updateBidStatus(bid.id, 'Approved').subscribe({
+      next: () => {
+        bid.status = 'Approved';
+        bid.processed = true;
+        Swal.fire({
+          icon: 'success',
+          title: 'Approved',
+          text: 'The bid has been successfully approved.',
+          timer: 2000,
+          showConfirmButton: false,
+        });
+      },
+      error: (err) => {
+        console.error('Failed to approve the bid', err);
+        Swal.fire('Error', 'An error occurred while approving the bid', 'error');
+      }
     });
-
-    doc.save('Proposal_and_Approval_Management.pdf');
   }
 
-  acceptTable(table: TableEntry): void {
-    table.status = 'Approved';
-    table.processed = true;
-  }
-
-  rejectTable(table: TableEntry): void {
+  rejectTable(bid: TableEntry): void {
     Swal.fire({
-      title: 'Are you sure you want to reject?',
-      text: 'This request will be marked as rejected!',
+      title: 'Are you sure?',
+      text: 'The bid will be marked as rejected!',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Yes, Reject',
+      confirmButtonText: 'Yes, reject',
       cancelButtonText: 'Cancel',
       confirmButtonColor: '#e74c3c',
       cancelButtonColor: '#3498db',
     }).then((result) => {
       if (result.isConfirmed) {
-        table.status = 'Rejected';
-        table.processed = true;
-        Swal.fire({
-          icon: 'success',
-          title: 'Rejected!',
-          text: 'The request has been rejected successfully.',
-          timer: 2000,
-          showConfirmButton: false,
+        this.bidService.updateBidStatus(bid.id, 'Rejected').subscribe({
+          next: () => {
+            bid.status = 'Rejected';
+            bid.processed = true;
+            Swal.fire({
+              icon: 'success',
+              title: 'Rejected',
+              text: 'The bid has been successfully rejected.',
+              timer: 2000,
+              showConfirmButton: false,
+            });
+          },
+          error: (err) => {
+            console.error('Failed to reject the bid', err);
+            Swal.fire('Error', 'An error occurred while rejecting the bid', 'error');
+          }
         });
-      }
-    });
-  }
-
-  ngOnInit() {
-    this.tables.forEach(table => {
-      table.status = table.status || 'Pending';
-      if (table.processed === undefined) {
-        table.processed = false;
       }
     });
   }

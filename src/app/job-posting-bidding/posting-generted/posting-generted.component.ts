@@ -2,11 +2,10 @@ import { Component } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormPostService } from '../../services/form-post.service';
-import { HttpClientModule } from '@angular/common/http';
+import { PostService } from '../../services/post.service';
 @Component({
   selector: 'app-posting-generted',
-  imports: [CommonModule, RouterLink,HttpClientModule ],
+  imports: [CommonModule, RouterLink],
   templateUrl: './posting-generted.component.html',
   styleUrl: './posting-generted.component.css'
 })
@@ -14,10 +13,10 @@ export class PostingGenertedComponent {
  posts: any[] = [];
 
 
-  constructor(private formPostService: FormPostService) {}
+  constructor(private PostService: PostService) {}
 
   ngOnInit(): void {
-    this.formPostService.getPosts().subscribe({
+    this.PostService.getPosts().subscribe({
       next: (res) => {
         this.posts = res;
       },
@@ -48,7 +47,7 @@ onDelete(posts: any): void {
     }
   }).then((result) => {
     if (result.isConfirmed) {
-      this.formPostService.deletePost(posts.post_id).subscribe({
+      this.PostService.deletePost(posts.post_id).subscribe({
         next: () => {
           this.posts = this.posts.filter(c => c !== posts);
 

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { FormPostService } from '../../services/form-post.service';
+import { PostService } from '../../services/post.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -28,7 +28,7 @@ export class JobEditeFormComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private formPostService: FormPostService
+    private PostService: PostService
   ) {}
 
   ngOnInit(): void {
@@ -43,7 +43,7 @@ export class JobEditeFormComponent implements OnInit {
 
     this.initForm();
 
-    this.formPostService.getPostById(this.postId).subscribe({
+    this.PostService.getPostById(this.postId).subscribe({
       next: (post) => {
         this.postForm.patchValue({
           jobTitle: post.title,
@@ -60,7 +60,7 @@ export class JobEditeFormComponent implements OnInit {
             ? post.attachments[0]
             : post.attachments;
 
-          this.originalImageUrl = this.formPostService.getImageUrl(firstAttachment);
+          this.originalImageUrl = this.PostService.getImageUrl(firstAttachment);
           this.attachedFiles = [{ url: this.originalImageUrl, name: 'Current Attachment' }];
         }
       },
@@ -133,7 +133,7 @@ onSave() {
     formData.append('delete_attachment', 'true');
   }
 
-  this.formPostService.updateJobPost(this.postId, formData).subscribe({
+  this.PostService.updateJobPost(this.postId, formData).subscribe({
     next: () => {
       Swal.fire('Post updated successfully', '', 'success').then(() => {
         this.router.navigate(['/JobPostingBiddingComponent/post']);

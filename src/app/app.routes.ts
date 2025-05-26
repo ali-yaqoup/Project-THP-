@@ -52,7 +52,7 @@ export const routes: Routes = [
       { path: '', redirectTo: 'post', pathMatch: 'full' },
       { path: 'post', component: PostingGenertedComponent },
       { path: 'edite/:id', component: JobEditeFormComponent },
-      { path: 'offers', component: JobBidTableComponent},
+      { path: 'bids/:post_id', component: JobBidTableComponent},
       { path: 'form', component: JobFormComponent},
     ],
   },
