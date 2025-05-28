@@ -33,3 +33,9 @@ button.btn.btn-outline-dark.btn-sm:hover i {
   transform: translateY(-1px);
 }
 
+.chart-fixed-height {
+  height: 100px !important;
+}
+
+
+

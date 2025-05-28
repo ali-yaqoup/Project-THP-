@@ -1,43 +1,76 @@
 <div class="row align-items-stretch ms-3" *ngIf="isBrowser">
+
   <div class="col-12 mb-3">
-    <div class="report-box p-3">
-      <div class="fw-bold mb-2">Monthly Reports</div>
+    <div class="report-box p-3 position-relative" [ngStyle]="reportCardStyle">
+      <div class="d-flex justify-content-end mb-2">
+        <button class="btn btn-outline-primary btn-sm" (click)="downloadMonthlyReport()">
+          <i class="fas fa-download me-1"></i> Excel
+        </button>
+      </div>
+      <h6 class="card-title mb-0">
+        <i class="fas fa-chart-line me-2 text-success"></i> Monthly Reports
+      </h6>
+      <br>
+
       <canvas baseChart
         [data]="lineChartData"
         [options]="lineChartOptions"
         chartType="line">
       </canvas>
+
     </div>
   </div>
 
-  <div class="col-12 col-md-6 mb-3">
-    <div class="report-box p-3">
-      <div class="fw-bold mb-2">Jobs by Category</div>
-      <canvas baseChart
-              [data]="barChartData"
-              [options]="barChartOptions"
-              chartType="bar">
-      </canvas>
-    </div>
-  </div>
 
   <div class="col-12 col-md-6 mb-3">
-    <div class="report-box p-3 text-center">
+  <div class="report-box p-3 position-relative" [ngStyle]="reportCardStyle">
+    <div class="d-flex justify-content-end mb-2">
+      <button class="btn btn-outline-warning btn-sm" (click)="downloadCategoryReport()">
+        <i class="fas fa-download me-1"></i> Excel
+      </button>
+    </div>
+    <div class="d-flex align-items-center mb-2">
+      <i class="fas fa-chart-bar text-warning me-2 fs-5"></i>
+      <h6 class="card-title mb-0 fw-bold text-dark">Posts by Month</h6>
+    </div>
+
+    <canvas baseChart
+      [data]="barChartData"
+      [options]="barChartOptions"
+      chartType="bar"
+      class="chart-fixed-height">
+    </canvas>
+
+  </div>
+</div>
+
+
+
+  <div class="col-12 col-md-6 mb-3">
+    <div class="report-box p-3 position-relative text-center" [ngStyle]="reportCardStyle">
+      <div class="d-flex justify-content-end mb-2">
+        <button class="btn btn-outline-success btn-sm" (click)="downloadStatusReport()">
+          <i class="fas fa-download me-1"></i> Excel
+        </button>
+      </div>
       <div class="fw-bold mb-2">Jobs by Status</div>
+      <div class="d-flex justify-content-around mb-3">
+        <div class="text-center">
+          <div class="fw-bold text-success" style="font-size: 20px;">{{ activeCount }}</div>
+          <div class="small text-muted">Active</div>
+        </div>
+        <div class="text-center">
+          <div class="fw-bold text-secondary" style="font-size: 20px;">{{ deletedCount }}</div>
+          <div class="small text-muted">Deleted</div>
+        </div>
+      </div>
+
       <canvas baseChart
               [data]="doughnutChartData"
               [options]="doughnutChartOptions"
               chartType="doughnut">
       </canvas>
+
     </div>
   </div>
-
-  <div class="col-12 col-md-6 mb-3">
-    <div class="report-box p-3 text-center">
-      <div class="fw-bold mb-2">Download Reports</div>
-      <button class="btn btn-outline-dark btn-sm">
-        <i class="fas fa-download me-1"></i> Download Report
-      </button>
-    </div>
-  </div>
-
+</div>
