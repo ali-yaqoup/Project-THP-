@@ -36,7 +36,6 @@
       <table>
         <thead>
           <tr>
-            <th (click)="toggleSort('id')">ID</th>
             <th (click)="toggleSort('jobTitle')">Job Title</th>
             <th (click)="toggleSort('clientName')">Client Name</th>
             <th (click)="toggleSort('price')">Price</th>
@@ -47,7 +46,6 @@
         </thead>
         <tbody>
           <tr *ngFor="let table of Tables">
-            <td>{{ table.id }}</td>
             <td>{{ table.jobTitle }}</td>
             <td>{{ table.clientName }}</td>
             <td>{{ table.price | currency:'USD' }}</td>

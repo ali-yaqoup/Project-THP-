@@ -104,7 +104,7 @@
             href="#"
             class="btn btn-view-offers w-100 text-white mt-3"
             style="background-color: #0a4e92"
-            routerLink="/JobPostingBiddingComponent/offers"
+             [routerLink]="['/JobPostingBiddingComponent/bids', post.post_id]"
           >
             <i class="bi bi-briefcase me-1"></i>
             Bids Management
