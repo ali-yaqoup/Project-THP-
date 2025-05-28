@@ -1,55 +1,84 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { JobService } from '../../services/job.service';
 
 @Component({
   selector: 'app-manage-users',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './manage-users.component.html',
   styleUrls: ['./manage-users.component.css']
 })
-export class ManageUsersComponent {
-  users = [
-    {
-      name: 'Jacob Jones',
-      avatar: 'https://i.pravatar.cc/30?img=1',
-      type: 'Artisan',
-      status: 'Pending',
+export class ManageUsersComponent implements OnInit {
+  allUsers: any[] = [];
+  users: any[] = [];
+  selectedType = '';
+
+  constructor(private jobService: JobService) {}
+
+  ngOnInit(): void {
+    this.jobService.getAllUsers().subscribe({
+      next: (data) => {
+        this.allUsers = data;
+        this.users = data;
+
+      },
+
+      error: (err) => {
+        console.error('Error loading users:', err);
+      }
+    });
+
+  }
+
+  deleteUser(userId: number): void {
+    this.jobService.deleteUser(userId).subscribe({
+      next: () => {
+        this.allUsers = this.allUsers.filter(u => u.id !== userId);
+        this.filterUsers(); // إعادة التصفية بعد الحذف
+      },
+      error: (err) => {
+        console.error('Error deleting user:', err);
+      }
+    });
+  }
+
+  filterUsers(): void {
+    this.users = this.selectedType
+      ? this.allUsers.filter(u => u.user_type === this.selectedType)
+      : [...this.allUsers];
+  }
+
+  updateStatus(userId: number, status: string): void {
+  this.jobService.updateUserStatus(userId, status).subscribe({
+    next: () => {
+      const user = this.allUsers.find(u => u.id === userId);
+      if (user) user.status = status;
+      this.filterUsers();
     },
-    {
-      name: 'Devon Lane',
-      avatar: 'https://i.pravatar.cc/30?img=2',
-      type: 'Employer',
-      status: 'Active',
-    },
-    {
-      name: 'Darrell Steward',
-      avatar: 'https://i.pravatar.cc/30?img=3',
-      type: 'Employer',
-      status: 'Active',
-    },
-    {
-      name: 'Ralph Edwards',
-      avatar: 'https://i.pravatar.cc/30?img=4',
-      type: 'Employer',
-      status: 'Active',
+    error: (err) => {
+      console.error('Failed to update status:', err);
     }
-  ];
-
-  approveUser(user: any) {
-    user.status = 'Active';
-  }
-
-  rejectUser(user: any) {
-    user.status = 'Rejected';
-  }
-
-  getBadgeClass(status: string): string {
-    switch (status) {
-      case 'Active': return 'bg-success text-white';
-      case 'Pending': return 'bg-warning text-dark';
-      case 'Rejected': return 'bg-danger text-white';
-      default: return 'bg-secondary text-white';
-    }
-  }
+  });
 }
+saveUserChanges(user: any): void {
+  this.jobService.updateUser(user.id, {
+    full_name: user.full_name,
+    user_type: user.user_type
+  }).subscribe({
+    next: () => {
+      console.log('✅ User updated successfully');
+      alert('✅ User updated successfully');
+    },
+    error: (err) => {
+      console.error('❌ Failed to update user:', err);
+      alert('❌ Failed to update user');
+    }
+  });
+}
+
+
+}
+
+

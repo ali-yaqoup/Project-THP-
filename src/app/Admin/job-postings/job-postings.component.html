@@ -1,5 +1,10 @@
 <div class="card p-3">
-  <h6 class="card-title mb-2">Form Posts & Transactions</h6>
+  <h6 class="card-title mb-0">
+ <i class="fas fa-clipboard-check me-2 text-success"></i> Posts & Transactions
+
+</h6>
+
+
   <div class="table-responsive">
     <table class="table table-borderless align-middle">
       <thead class="small text-muted">
@@ -15,25 +20,28 @@
         <tr *ngFor="let post of formPosts">
           <td>{{ post.title }}</td>
 
-          <!-- إذا عندك علاقة مع المستخدم -->
-          <td>{{ post.user?.name || 'Unknown' }}</td>
+          <!--  عرض full_name من user -->
+          <td>{{ post.user?.full_name || 'Unknown' }}</td>
 
-          <td>{{ post.deadline | date:'mediumDate' }}</td>
+          <!--التاريخ  -->
+          <td>{{ post.deadline | date: 'mediumDate' }}</td>
 
+          <!--شارة ملونة حسب الحالة-->
           <td>
-            <span class="badge d-flex align-items-center gap-1" >
-              <ng-container [ngSwitch]="post.status">
-                <i *ngSwitchCase="'Active'" class="fas fa-check-circle"></i>
-                <i *ngSwitchCase="'Remove'" class="fas fa-times-circle"></i>
-                <i *ngSwitchDefault class="fas fa-info-circle"></i>
+            <span class="badge d-flex align-items-center gap-1">
+              <ng-container [ngSwitch]="post.status?.toLowerCase()">
+                <i *ngSwitchCase="'active'" class="fas fa-check-circle text-success"></i>
+                <i *ngSwitchCase="'remove'" class="fas fa-times-circle text-danger"></i>
+                <i *ngSwitchDefault class="fas fa-info-circle text-muted"></i>
               </ng-container>
               {{ post.status }}
             </span>
           </td>
 
+          <!--زر الحذف-->
           <td>
-            <button class="btn btn-outline-danger btn-sm" (click)="removePost(post)">
-              <i class="fas fa-trash-alt me-1"></i> Remove
+            <button class="btn btn-sm btn-danger" (click)="removePost(post)">
+              <i class="fas fa-trash-alt"></i> Delete
             </button>
           </td>
         </tr>
