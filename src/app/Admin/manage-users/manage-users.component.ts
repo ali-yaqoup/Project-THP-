@@ -36,7 +36,7 @@ export class ManageUsersComponent implements OnInit {
     this.jobService.deleteUser(userId).subscribe({
       next: () => {
         this.allUsers = this.allUsers.filter(u => u.id !== userId);
-        this.filterUsers(); // إعادة التصفية بعد الحذف
+        this.filterUsers(); 
       },
       error: (err) => {
         console.error('Error deleting user:', err);
@@ -68,12 +68,12 @@ saveUserChanges(user: any): void {
     user_type: user.user_type
   }).subscribe({
     next: () => {
-      console.log('✅ User updated successfully');
-      alert('✅ User updated successfully');
+      console.log(' User updated successfully');
+      alert(' User updated successfully');
     },
     error: (err) => {
-      console.error('❌ Failed to update user:', err);
-      alert('❌ Failed to update user');
+      console.error(' Failed to update user:', err);
+      alert(' Failed to update user');
     }
   });
 }
