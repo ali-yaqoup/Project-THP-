@@ -57,7 +57,7 @@ export class ReportCardsComponent implements OnInit {
         this.usersRejectedCount = data.rejected;
       },
       error: (err) => {
-        console.error('❌ Failed to load user stats:', err);
+        console.error(' Failed to load user stats:', err);
       }
     });
   }
@@ -68,7 +68,7 @@ export class ReportCardsComponent implements OnInit {
         this.deletedUserCount = res.count;
       },
       error: (err) => {
-        console.error('❌ Failed to load deleted user count:', err);
+        console.error(' Failed to load deleted user count:', err);
       }
     });
   }
