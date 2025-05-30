@@ -20,13 +20,13 @@
         <tr *ngFor="let post of formPosts">
           <td>{{ post.title }}</td>
 
-          <!--  عرض full_name من user -->
+        
           <td>{{ post.user?.full_name || 'Unknown' }}</td>
 
-          <!--التاريخ  -->
+         
           <td>{{ post.deadline | date: 'mediumDate' }}</td>
 
-          <!--شارة ملونة حسب الحالة-->
+       
           <td>
             <span class="badge d-flex align-items-center gap-1">
               <ng-container [ngSwitch]="post.status?.toLowerCase()">
@@ -38,7 +38,7 @@
             </span>
           </td>
 
-          <!--زر الحذف-->
+      
           <td>
             <button class="btn btn-sm btn-danger" (click)="removePost(post)">
               <i class="fas fa-trash-alt"></i> Delete
