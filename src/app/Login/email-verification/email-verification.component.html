@@ -1,31 +1,32 @@
 <div class="verification-wrapper">
-    <div class="verification-container">
-    
-      <div class="logo-area">
-        <i class="fas fa-briefcase logo-icon"></i>
-        <span class="logo-text">THP</span>
-      </div>
-  
-      <h2>Email Verification</h2>
-      <p class="instruction">
-        We've sent an email to <strong>emailaddressgmail.com</strong> to verify your email address and activate your account.
-      </p>
-  
-      <form [formGroup]="verifyForm" (ngSubmit)="onSubmit()">
-        <input
-          type="text"
-          formControlName="code"
-          class="code-input"
-          placeholder="Verification Code"
-        />
-        <button type="submit" class="verify-btn">
-         <a routerLink="/section" style="color: white; text-decoration: none; ">Verify My Account</a>  <i class="fas fa-arrow-right"></i>
-        </button>
-      </form>
-  
-      <p class="resend-text">
-        Didn’t receive any code?
-        <a href="#" (click)="onResend()">Resend</a>
-      </p>
+  <div class="verification-container">
+
+    <div class="logo-area">
+      <i class="fas fa-briefcase logo-icon"></i>
+      <span class="logo-text">THP</span>
     </div>
+
+    <h2>Email Verification</h2>
+    <p class="instruction">
+      We've sent an email to <strong>{{ email }}</strong> to verify your email address and activate your account.
+    </p>
+
+    <form [formGroup]="verifyForm" (ngSubmit)="onSubmit()">
+      <input
+        type="text"
+        formControlName="code"
+        class="code-input"
+        placeholder="Verification Code"
+      />
+      <button type="submit" class="verify-btn">
+        Verify My Account <i class="fas fa-arrow-right"></i>
+      </button>
+    </form>
+
+    <p class="resend-text">
+      Didn’t receive any code?
+      <a href="#" (click)="onResend()">Resend</a>
+    </p>
+    
   </div>
+</div>
