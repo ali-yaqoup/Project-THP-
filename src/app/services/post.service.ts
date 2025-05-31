@@ -24,15 +24,15 @@ getPostById(id: number): Observable<any> {
 }
 
 updateJobPost(id: number, postData: FormData): Observable<any> {
-  postData.append('_method', 'PUT'); 
-  return this.http.post(`${this.apiUrl}/${id}`, postData); 
+  postData.append('_method', 'PUT');
+  return this.http.post(`${this.apiUrl}/${id}`, postData);
 }
 
 
 getImageUrl(attachment: string): string {
   return `http://localhost:8000${attachment}`;
 }
- 
+
 
   getBidsByPost(post_id: number): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/bids/${post_id}`);
