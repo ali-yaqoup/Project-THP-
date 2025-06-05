@@ -1,75 +1,96 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reset-password',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule,RouterLink],
   templateUrl: './reset-password.component.html',
-  styleUrls: ['./reset-password.component.css']
+  styleUrls: ['./reset-password.component.css'],
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule, FormsModule]
 })
 export class ResetPasswordComponent {
+  emailForm: FormGroup;
   resetForm: FormGroup;
-  submitted = false;
-  showPassword = false;
-  showConfirmPassword = false;
+  step = 1;
+  message = '';
+  error = '';
+  loading = false;
 
-  rules = {
-    minLength: false,
-    uppercase: false,
-    lowercase: false,
-    number: false,
-    specialChar: false,
-    noSpaces: false,
- 
-  };
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router // 👈 استيراد Router
+  ) {
+    this.emailForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]]
+    });
 
-  constructor(private fb: FormBuilder) {
     this.resetForm = this.fb.group({
-      password: ['', Validators.required],
-      confirmPassword: ['', Validators.required]
-    }, { validators: this.passwordsMatch });
+      otp: ['', [Validators.required, Validators.pattern(/^\d{6}$/)]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      password_confirmation: ['', [Validators.required]]
+    });
   }
 
-  get f() {
-    return this.resetForm.controls;
+  sendOtp() {
+    this.error = '';
+    this.message = '';
+    const email = this.emailForm.value.email;
+
+    if (!email) {
+      this.error = 'Email is required';
+      return;
+    }
+
+    this.loading = true;
+    this.authService.sendResetPasswordOtp(email).subscribe({
+      next: (res) => {
+        this.message = res.message;
+        this.step = 2;
+        this.loading = false;
+      },
+      error: (err) => {
+        this.error = err.error?.message || 'Error sending OTP';
+        this.loading = false;
+      }
+    });
   }
 
-  togglePassword() {
-    this.showPassword = !this.showPassword;
-  }
+  resetPassword() {
+    this.error = '';
+    this.message = '';
+    const email = this.emailForm.value.email;
 
-  toggleConfirmPassword() {
-    this.showConfirmPassword = !this.showConfirmPassword;
-  }
+    const data = {
+      email,
+      otp: this.resetForm.value.otp,
+      password: this.resetForm.value.password,
+      password_confirmation: this.resetForm.value.password_confirmation
+    };
 
-  passwordsMatch(group: AbstractControl): { mismatch: true } | null {
-    const pass = group.get('password')?.value;
-    const confirm = group.get('confirmPassword')?.value;
-    return pass === confirm ? null : { mismatch: true };
-  }
+    if (data.password !== data.password_confirmation) {
+      this.error = 'Passwords do not match';
+      return;
+    }
 
-  checkPasswordRules() {
-    const pass = this.f['password'].value || '';
-    const confirm = this.f['confirmPassword'].value || '';
+    this.loading = true;
+    this.authService.resetPassword(data).subscribe({
+      next: (res) => {
+        this.message = res.message;
+        this.loading = false;
 
-    this.rules.minLength = pass.length >= 8;
-    this.rules.uppercase = /[A-Z]/.test(pass);
-    this.rules.lowercase = /[a-z]/.test(pass);
-    this.rules.number = /\d/.test(pass);
-    this.rules.specialChar = /[!@#$%^&*(),.?":{}|<>]/.test(pass);
-    this.rules.noSpaces = !/\s/.test(pass);
-   
-  }
-
-  onSubmit() {
-    this.submitted = true;
-    if (this.resetForm.invalid) return;
-
-    console.log('Password Reset:', this.resetForm.value);
-    alert('Password has been reset successfully!');
+       
+        setTimeout(() => {
+          this.router.navigate(['/LoginComponent/login-page']);
+        }, 1500);
+      },
+      error: (err) => {
+        this.error = err.error?.message || 'Error resetting password';
+        this.loading = false;
+      }
+    });
   }
 }

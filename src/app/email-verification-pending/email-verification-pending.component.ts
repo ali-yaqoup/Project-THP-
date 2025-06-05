@@ -23,17 +23,17 @@ export class EmailVerificationPendingComponent implements OnInit, OnDestroy {
       this.authService.getUser().subscribe({
         next: (user) => {
           console.log('User status:', user.status);
-          if (user?.status === 'active') {
-            // حذف التوكن (اختياري)
+          if (user?.status === 'pending') {
+          
             localStorage.removeItem('token');
-            // إعادة التوجيه إلى صفحة تسجيل الدخول
+            
             this.router.navigate(['/login']);
           }
         },
         error: (err) => {
           console.error('Error checking verification status:', err);
           if (err.status === 401) {
-            // المستخدم غير مصدق - التوكن منتهي أو غير صالح
+           
             this.router.navigate(['/LoginComponent/login-page']);
           }
         }
