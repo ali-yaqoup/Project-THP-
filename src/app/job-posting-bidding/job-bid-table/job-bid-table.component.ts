@@ -52,7 +52,7 @@ export class JobBidTableComponent implements OnInit {
         this.bids = data.map((bid: any) => ({
           id: bid.id,
           jobTitle: bid.job_title ?? '',
-          clientName: bid.user?.name ?? '',
+          clientName: bid.client_name ?? 'Unknown',
           price: bid.price ?? 0,
           submissionDate: bid.submission_date ?? '',
           status: bid.status ?? 'Pending',
