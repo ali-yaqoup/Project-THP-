@@ -15,16 +15,20 @@ export class PostingGenertedComponent {
 
   constructor(private PostService: PostService) {}
 
-  ngOnInit(): void {
-    this.PostService.getPosts().subscribe({
-      next: (res) => {
-        this.posts = res;
-      },
-      error: (err) => {
-        console.error('Error fetching data:', err);
+ngOnInit(): void {
+  this.PostService.getPosts().subscribe({
+    next: (res) => {
+      this.posts = res;
+    },
+    error: (err) => {
+      console.error('Error fetching data:', err);
+      if (err.status === 401) {
+        console.warn('Unauthorized: Please login');
       }
-    });
-  }
+    }
+  });
+}
+
 
   onEdit(card: any) {
     alert(`Editing: ${card.title}`);
