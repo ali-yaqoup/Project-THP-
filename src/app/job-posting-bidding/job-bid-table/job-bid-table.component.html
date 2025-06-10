@@ -38,6 +38,7 @@
           <tr>
             <th (click)="toggleSort('jobTitle')">Job Title</th>
             <th (click)="toggleSort('clientName')">Client Name</th>
+            <th (click)="toggleSort('phone')">phone</th>
             <th (click)="toggleSort('price')">Price</th>
             <th (click)="toggleSort('submissionDate')">Submission Date</th>
             <th (click)="toggleSort('status')">Status</th>
@@ -48,6 +49,7 @@
           <tr *ngFor="let table of Tables">
             <td>{{ table.jobTitle }}</td>
             <td>{{ table.clientName }}</td>
+               <td>{{ table.phone}}</td>
             <td>{{ table.price | currency:'USD' }}</td>
           
             <td>{{ table.submissionDate }}</td>
