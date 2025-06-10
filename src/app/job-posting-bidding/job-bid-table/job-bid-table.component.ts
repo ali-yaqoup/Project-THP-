@@ -13,6 +13,7 @@ interface TableEntry {
   id: number;
   jobTitle: string;
   clientName: string;
+  phone: string;
   price: number;
   submissionDate: string;
   status: string;
@@ -53,6 +54,7 @@ export class JobBidTableComponent implements OnInit {
           id: bid.id,
           jobTitle: bid.job_title ?? '',
           clientName: bid.client_name ?? 'Unknown',
+          phone:bid.phone??'',
           price: bid.price ?? 0,
           submissionDate: bid.submission_date ?? '',
           status: bid.status ?? 'Pending',
@@ -134,11 +136,12 @@ export class JobBidTableComponent implements OnInit {
 
   generatePDF(): void {
     const doc = new jsPDF();
-    const headers = [['ID', 'Job Title', 'Client Name', 'Price', 'Submission Date', 'Status']];
+    const headers = [['ID', 'Job Title', 'Client Name','phone', 'Price', 'Submission Date', 'Status']];
     const rows = this.Tables.map(bid => [
       bid.id,
       bid.jobTitle,
       bid.clientName,
+       bid.phone,
       `${bid.price} SAR`,
       bid.submissionDate,
       bid.status
