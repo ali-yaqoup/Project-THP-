@@ -30,14 +30,13 @@
     <td>
       <input [(ngModel)]="user.full_name" class="form-control form-control-sm" />
     </td>
-
     <td>
-      <select [(ngModel)]="user.user_type" class="form-select form-select-sm">
-        <option value="job_owner">Employer</option>
-        <option value="artisan">Artisan</option>
-      </select>
-    </td>
-
+  <select [(ngModel)]="user.user_type" class="form-select form-select-sm">
+    <option value="admin">Admin</option>
+    <option value="job_owner">Employer</option>
+    <option value="artisan">Artisan</option>
+  </select>
+</td>
     <td>
       <span
         class="badge text-capitalize"
