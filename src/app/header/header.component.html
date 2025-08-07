@@ -1,50 +1,60 @@
 <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
-      <div class="container">
-        <a class="navbar-brand d-flex align-items-center" routerLink="/section">
-          <i class="fas fa-tools me-2"></i>
-          <span>THP</span>
-        </a>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" routerLink="/section">
+        <i class="fas fa-tools me-2"></i>
+        <span>THP</span>
+      </a>
 
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/section">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/ABUTUS/about">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/Services/services">Services</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/Contact/contact">Contact</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/JobPostingBiddingComponent/post">My Job</a>
-            </li>
-            <li class="nav-item">
-             <a class="nav-link" routerLink="/jobs">Job Filters</a>
-            </li>
-          </ul>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/section">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/ABUTUS/about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/Services/services">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/Contact/contact">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/JobPostingBiddingComponent/post">My Job</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/jobs">Job Filters</a>
+          </li>
 
-          <div class="d-flex ms-lg-3">
+          <li class="nav-item" *ngIf="isAdmin">
+            <a class="nav-link text-warning" (click)="goToAdminDashboard()" style="cursor: pointer;">Admin Dashboard</a>
+          </li>
+        </ul>
+
+        <div class="d-flex ms-lg-3">
+          <ng-container *ngIf="!isLoggedIn; else loggedInButtons">
             <a class="btn btn-outline-primary me-2" routerLink="/LoginComponent/login-page">Login</a>
             <a class="btn btn-primary" routerLink="/LoginComponent/register">Create Account</a>
-          </div>
+          </ng-container>
+
+          <ng-template #loggedInButtons>
+            <button class="btn btn-danger" (click)="logout()">Logout</button>
+          </ng-template>
         </div>
       </div>
-    </nav>
-  </header>
+    </div>
+  </nav>
+</header>

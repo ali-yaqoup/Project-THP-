@@ -1,7 +1,9 @@
 <section class="services-hero">
-    <div class="content">
-      <h1>Find the Right Technician for Every Job</h1>
-      <p>Explore a wide range of professional services and connect with trusted experts in your area.</p>
-      <a routerLink="/section" class="btn-primary" style="color: white; text-decoration: none; ">Get Started</a>
-    </div>
-  </section>
+  <div class="content">
+    <h1>Find the Right Technician for Every Job</h1>
+    <p>Explore a wide range of professional services and connect with trusted experts in your area.</p>
+
+
+    <a *ngIf="!isLoggedIn" routerLink="/section" class="btn-primary" style="color: white; text-decoration: none;">Get Started</a>
+  </div>
+</section>

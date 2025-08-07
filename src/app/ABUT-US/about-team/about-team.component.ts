@@ -13,18 +13,18 @@ export class AboutTeamComponent {
     {
       name: 'Ali',
       title: 'Founder & CEO',
-      img: 'https://scontent.fjrs29-1.fna.fbcdn.net/v/t39.30808-1/459957838_1212591473415456_6012384593347153789_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=101&ccb=1-7&_nc_sid=e99d92&_nc_ohc=Zon5R6Pmr9AQ7kNvwF1t4tR&_nc_oc=Adkt2cfOhyZWU4AA1yeNuKf2zNchwYkfqAqMRP8au8MZTChmkEh0z7dfdX_48BbXObo&_nc_zt=24&_nc_ht=scontent.fjrs29-1.fna&_nc_gid=O8IemJ8pKK8p6mBAvWvPlQ&oh=00_AfF9IdJE4pi7Ql2cYic6sr0unim6q5Yjt6gu0pGR7bLxmg&oe=68114A3D'
+      img: 'https://scontent.fjrs27-1.fna.fbcdn.net/v/t39.30808-1/459957838_1212591473415456_6012384593347153789_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=101&ccb=1-7&_nc_sid=e99d92&_nc_ohc=dK_mqWS3_SUQ7kNvwEA9Fuh&_nc_oc=Adlt5H0fVWg3cGDwTRwgecTvK9EAVbBYWl7PN4XafKCU1a2k_pMbSfPEJjXZD-cn7gY&_nc_zt=24&_nc_ht=scontent.fjrs27-1.fna&_nc_gid=72S8qpMMka9x1NGtW61KEQ&oh=00_AfNL5O0HkF6a9AqdiEyIziHuj4Qj8Yj0Dj6bYGgayXJ5QQ&oe=6859CCBD'
     },
     {
       name: 'kareem',
       title: 'CTO & Lead Developer',
-      img: 'https://scontent.fjrs29-1.fna.fbcdn.net/v/t39.30808-6/343000829_783387196307065_3501521866739636906_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=3QHUpf4RaLkQ7kNvwEp4JLz&_nc_oc=AdkAoDxA55aUHglu79JeIOL20T1mAGY4scO0ammVYuGJn7hbJcNZJ-0_11_MiVJTQVo&_nc_zt=23&_nc_ht=scontent.fjrs29-1.fna&_nc_gid=bM663VhjAb7ODD6DoBFXWw&oh=00_AfEqPGr7SzX7XpWNYcxYybJ_FR9D3J0cWnRVM7qPqKY_Pw&oe=681166E1'
+      img: 'https://scontent.fjrs27-1.fna.fbcdn.net/v/t39.30808-1/343000829_783387196307065_3501521866739636906_n.jpg?stp=dst-jpg_s200x200_tt6&amp;_nc_cat=108&amp;ccb=1-7&amp;_nc_sid=e99d92&amp;_nc_ohc=FuIPRv5kRCkQ7kNvwFdf5NC&amp;_nc_oc=AdktkLTDqtksQ9b6j65b2JeemPx75hEOdWgnAtM05P3scki_7LH1IL6NRQ4PRH-o6nU&amp;_nc_zt=24&amp;_nc_ht=scontent.fjrs27-1.fna&amp;_nc_gid=2qsVN80Z9vYDxC-qljXkbQ&amp;oh=00_AfNASBnBhf4h5qoTvJr4ocWGjaVPs9ohKcdyGEd55pFS4w&amp;oe=6859C367xlink:href="https://scontent.fjrs27-1.fna.fbcdn.net/v/t39.30808-1/343000829_783387196307065_3501521866739636906_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=108&ccb=1-7&_nc_sid=e99d92&_nc_ohc=FuIPRv5kRCkQ7kNvwFdf5NC&_nc_oc=AdktkLTDqtksQ9b6j65b2JeemPx75hEOdWgnAtM05P3scki_7LH1IL6NRQ4PRH-o6nU&_nc_zt=24&_nc_ht=scontent.fjrs27-1.fna&_nc_gid=2qsVN80Z9vYDxC-qljXkbQ&oh=00_AfNASBnBhf4h5qoTvJr4ocWGjaVPs9ohKcdyGEd55pFS4w&oe=6859C367'
     },
     {
       name: 'Waleed',
       title: 'Marketing Manager',
-      img: 'https://scontent.fjrs29-1.fna.fbcdn.net/v/t39.30808-1/487201446_1714525336125619_6326845046608345815_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=109&ccb=1-7&_nc_sid=e99d92&_nc_ohc=sp852fKM8WoQ7kNvwGEKHe1&_nc_oc=Adm02iGqi5408fFhUHCtLpQme4aCXMm1wt83Dv9GbzzHJDWD-0eXwU35f132TDZg3QM&_nc_zt=24&_nc_ht=scontent.fjrs29-1.fna&_nc_gid=dSBgCD-_OWQs1qKeL3GOTw&oh=00_AfGPIlzPk0nuimnKwDjDS46JHaU3DJlecy901GpN_ykWqg&oe=68114F07'
+      img: 'https://scontent.fjrs27-1.fna.fbcdn.net/v/t39.30808-1/487201446_1714525336125619_6326845046608345815_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=109&ccb=1-7&_nc_sid=e99d92&_nc_ohc=n0v0ORngUXQQ7kNvwEbv--m&_nc_oc=AdmgTLnUv9of7d1ihqQBMo6qdqqr4BaORppMt3eW_SZ7PDunGj9nil4XDEEYDb9r-E8&_nc_zt=24&_nc_ht=scontent.fjrs27-1.fna&_nc_gid=Cts6xf0d16Bhwt1LnMhjHw&oh=00_AfP55lBVXdqsAGTnTI_jKrC25Z87Dm4byQYd5PJ7LWnIkw&oe=68599947'
     },
-  
+
   ];
 }

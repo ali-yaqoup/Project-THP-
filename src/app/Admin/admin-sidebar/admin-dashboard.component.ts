@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router'; 
+import { Router } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -9,8 +10,18 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./admin-dashboard.component.css']
 })
 export class AdminDashboardComponent {
-goTo(arg0: string) {
-throw new Error('Method not implemented.');
+  constructor(private router: Router) {}
 
+
+
+  logout() {
+  localStorage.removeItem('token');
+  localStorage.removeItem('role');
+  this.router.navigate(['/section']);
 }
+
+
+  goTo(path: string) {
+    this.router.navigate([path]);
+  }
 }

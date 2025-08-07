@@ -35,20 +35,20 @@ export class EmailVerificationComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     if (this.verifyForm.invalid || !this.email) return;
-  
+
     const data = {
       email: this.email,
-      otp: this.verifyForm.value.code 
+      otp: this.verifyForm.value.code
     };
-  
+
     this.authService.loginStep2(data).subscribe({
       next: (res) => {
-     
+
         localStorage.setItem('token', res.token);
-  
+        this.authService.setLoggedIn(true);
         const role = res.user?.user_type;
-      
-   
+
+
   
         if (role === 'admin') {
           this.router.navigate(['/admin-dashboard']);
@@ -70,6 +70,6 @@ export class EmailVerificationComponent implements OnInit {
 
   onResend() {
     alert('Verification code resent.');
- 
+
   }
 }

@@ -38,7 +38,7 @@ export class LoginPageComponent {
     this.authService.loginStep1(this.loginForm.value).subscribe({
       next: (res) => {
         console.log('Login step 1 success:', res);
-        
+
         this.router.navigate(['/LoginComponent/email-verification'], {
           queryParams: { email: this.loginForm.value.email }
         });

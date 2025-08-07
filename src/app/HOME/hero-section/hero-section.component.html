@@ -1,16 +1,23 @@
 <section class="page-header">
-    <div class="breadcrumb">
-      <span>Home</span>—
-<span>Blog</span>—
-      <span>How to Hire the Right Technician</span>
-    </div>
-    <h1 class="main-title">How to Hire the Right Technician</h1>
-    <div class="auth-buttons">
-      <a  routerLink="/LoginComponent/login-page" class="btn-outline">Login</a>
-      <a routerLink="/LoginComponent/register" class="btn-primary">Create Account</a>
-    </div>
-    <div class="meta">
-      Author: Admin<br />
-      Last Updated: April 14, 2025 | Technician Tips & Insights
-    </div>
-  </section>
+  <div class="breadcrumb">
+    <span>Home</span>—
+    <span>Blog</span>—
+    <span>How to Hire the Right Technician</span>
+  </div>
+
+  <h1 class="main-title">How to Hire the Right Technician</h1>
+
+  <div class="auth-buttons" *ngIf="!isLoggedIn">
+    <a routerLink="/LoginComponent/login-page" class="btn-outline">Login</a>
+    <a routerLink="/LoginComponent/register" class="btn-primary">Create Account</a>
+  </div>
+
+  <div *ngIf="isLoggedIn" class="welcome-message">
+     Welcome back!
+  </div>
+
+  <div class="meta">
+
+    Last Updated: 19,6, 2025 | Technician Tips & Insights
+  </div>
+</section>

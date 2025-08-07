@@ -20,13 +20,13 @@
         <tr *ngFor="let post of formPosts">
           <td>{{ post.title }}</td>
 
-        
+
           <td>{{ post.user?.full_name || 'Unknown' }}</td>
 
-         
+
           <td>{{ post.deadline | date: 'mediumDate' }}</td>
 
-       
+
           <td>
             <span class="badge d-flex align-items-center gap-1">
               <ng-container [ngSwitch]="post.status?.toLowerCase()">
@@ -38,7 +38,7 @@
             </span>
           </td>
 
-      
+
           <td>
             <button class="btn btn-sm btn-danger" (click)="removePost(post)">
               <i class="fas fa-trash-alt"></i> Delete

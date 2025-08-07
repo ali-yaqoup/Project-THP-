@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
 
@@ -9,7 +9,8 @@ import { CommonModule } from '@angular/common';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FormsModule]
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, RouterModule],
+
 })
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
