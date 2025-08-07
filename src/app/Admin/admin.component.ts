@@ -20,7 +20,7 @@ export class AdminComponent {
       throw new Error('Method not implemented.');
     }
   constructor(private router: Router) {}
-  
+
     closeModal() {
       this.router.navigate([{ outlets: { popup: null }}]);
     }

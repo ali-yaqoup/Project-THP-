@@ -148,12 +148,4 @@
     margin-bottom: 5px;
     display: block;
   }
-  .custom-link {
-  text-decoration: none;
-  color: #007bff;
-  cursor: pointer;
-}
-
-.custom-link:hover {
-  text-decoration: underline;
-}
+  
